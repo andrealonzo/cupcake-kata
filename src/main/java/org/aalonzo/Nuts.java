@@ -11,7 +11,10 @@ public class Nuts extends Topping {
 
     @Override
     public String name() {
-        return "nuts";
+        if(whatImTopping instanceof Topping){
+            return whatImTopping.name() + " and nuts";
+        }
+        return whatImTopping.name() + " with nuts";
     }
 
     @Override

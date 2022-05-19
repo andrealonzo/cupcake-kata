@@ -3,26 +3,29 @@ package org.aalonzo;
 public class Chocolate extends Topping {
 
     public static final double PRICE = .1;
-    private final Pastry pastry;
+    private final Pastry whatImTopping;
 
-    public Chocolate(Pastry pastry) {
-        super(pastry);
-        this.pastry = pastry;
+    public Chocolate(Pastry whatImTopping) {
+        super(whatImTopping);
+        this.whatImTopping = whatImTopping;
     }
 
 
     @Override
     public String name() {
-        return "chocolate";
+        if(whatImTopping instanceof Topping){
+            return whatImTopping.name() + " and chocolate";
+        }
+        return whatImTopping.name() + " with chocolate";
     }
 
     @Override
     public Pastry getWhatImTopping() {
-        return pastry;
+        return whatImTopping;
     }
 
     @Override
     public double price() {
-        return pastry.price() + PRICE;
+        return whatImTopping.price() + PRICE;
     }
 }
