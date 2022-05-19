@@ -32,5 +32,13 @@ public class BakeryTest {
         assertEquals("Cookie with chocolate", chocolateCookie.toString());
 
     }
+    @Test
+    public void cookieWithChocolateAndNuts(){
+        Decorator chocolateCookieNuts = new Nuts(new Chocolate(new Cookie()));
+
+        assertEquals("Cookie with chocolate and nuts", chocolateCookieNuts.toString());
+
+    }
+
 
 }
