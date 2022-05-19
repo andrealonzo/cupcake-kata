@@ -1,25 +1,25 @@
 package org.aalonzo;
 
-public class Nuts implements Decorator {
+public class Nuts implements Pastry {
 
     private static final double PRICE = .2;
-    private final Decorator decorator;
-    public Nuts(Decorator decorator) {
-        this.decorator = decorator;
+    private final Pastry pastry;
+    public Nuts(Pastry pastry) {
+        this.pastry = pastry;
     }
 
     @Override
-    public String toString() {
+    public String name() {
         return "nuts";
     }
 
     @Override
-    public Decorator getInner() {
-        return decorator;
+    public Pastry getInner() {
+        return pastry;
     }
 
     @Override
     public double price() {
-        return decorator.price() + PRICE;
+        return pastry.price() + PRICE;
     }
 }

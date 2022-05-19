@@ -1,16 +1,16 @@
 package org.aalonzo;
 
-public class Cupcake implements Decorator{
+public class Cupcake implements Pastry {
 
     public static final int PRICE = 1;
 
     @Override
-    public String toString() {
+    public String name() {
         return "Cupcake";
     }
 
     @Override
-    public Decorator getInner() {
+    public Pastry getInner() {
         return null;
     }
 

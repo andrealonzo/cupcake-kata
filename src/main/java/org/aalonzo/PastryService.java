@@ -1,35 +1,32 @@
 package org.aalonzo;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 public class PastryService {
 
     public static final String WITH = "with";
     public static final String AND = "and";
-    public String getName(Decorator pastry) {
+    public String getName(Pastry pastry) {
         Stack<String> pastriesLevels = getPastryLevels(pastry);
-        String name = generateName(pastriesLevels);
-        return  name;
+        return generateName(pastriesLevels);
 
     }
 
     private String generateName(Stack<String> pastriesLevels) {
-        String name = pastriesLevels.pop();
+        StringBuilder name = new StringBuilder(pastriesLevels.pop());
         if(!pastriesLevels.isEmpty()){
-            name += " " + WITH + " " + pastriesLevels.pop();
+            name.append(" " + WITH + " ").append(pastriesLevels.pop());
         }
         while(!pastriesLevels.isEmpty()){
-            name += " " + AND + " " + pastriesLevels.pop();
+            name.append(" " + AND + " ").append(pastriesLevels.pop());
         }
-        return name;
+        return name.toString();
     }
 
-    private Stack<String> getPastryLevels(Decorator pastry) {
-        Stack <String>pastriesLevels = new Stack();
+    private Stack<String> getPastryLevels(Pastry pastry) {
+        Stack<String> pastriesLevels = new Stack<>();
         while(pastry != null){
-            pastriesLevels.add(pastry.toString());
+            pastriesLevels.add(pastry.name());
             pastry = pastry.getInner();
         }
         return pastriesLevels;

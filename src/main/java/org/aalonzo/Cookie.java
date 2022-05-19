@@ -1,15 +1,15 @@
 package org.aalonzo;
 
-public class Cookie implements Decorator{
+public class Cookie implements Pastry {
     public static final int PRICE = 2;
 
     @Override
-    public String toString() {
+    public String name() {
         return "Cookie";
     }
 
     @Override
-    public Decorator getInner() {
+    public Pastry getInner() {
         return null;
     }
 

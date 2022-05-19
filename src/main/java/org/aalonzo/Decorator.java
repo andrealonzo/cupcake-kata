@@ -1,7 +1,20 @@
 package org.aalonzo;
 
-public interface Decorator {
-     Decorator getInner();
+public class Decorator implements Pastry{
+    private Pastry pastry;
 
-    double price();
+    @Override
+    public Pastry getInner() {
+        return null;
+    }
+
+    @Override
+    public double price() {
+        return 0;
+    }
+
+    @Override
+    public String name() {
+        return null;
+    }
 }

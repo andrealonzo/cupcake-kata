@@ -3,17 +3,17 @@ package org.aalonzo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bundle implements Decorator {
+public class Bundle implements Pastry {
 
-    List<Decorator> pastries;
+    List<Pastry> pastries;
     public static final double DISCOUNT = .10;
-    private Decorator pastry;
+    private Pastry pastry;
 
     public Bundle() {
         pastries = new ArrayList<>();
     }
 
-    public void add(Decorator pastry) {
+    public void add(Pastry pastry) {
         pastries.add(pastry);
     }
 
@@ -25,7 +25,12 @@ public class Bundle implements Decorator {
     }
 
     @Override
-    public Decorator getInner() {
+    public String name() {
+        return null;
+    }
+
+    @Override
+    public Pastry getInner() {
         return pastry;
     }
 }
