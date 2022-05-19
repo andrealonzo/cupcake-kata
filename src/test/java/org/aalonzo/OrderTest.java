@@ -11,7 +11,7 @@ public class OrderTest {
     @Test
     public void buyingNothingCostsNothing(){
         Order order = new Order();
-        double price = order.getTotalPrice();
+        double price = order.calculateTotalPrice();
         assertEquals(0, price, .01);
     }
 
@@ -20,7 +20,7 @@ public class OrderTest {
         Order order = new Order();
         Pastry pastry = new FakePastry();
         order.add(pastry);
-        double price = order.getTotalPrice();
+        double price = order.calculateTotalPrice();
         assertEquals(1, price, .01);
     }
 
