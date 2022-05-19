@@ -1,11 +1,12 @@
 package org.aalonzo;
 
-public class Nuts implements Pastry {
+public class Nuts extends Topping {
 
     private static final double PRICE = .2;
-    private final Pastry pastry;
-    public Nuts(Pastry pastry) {
-        this.pastry = pastry;
+    private final Pastry whatImTopping;
+    public Nuts(Pastry whatImTopping) {
+        super(whatImTopping);
+        this.whatImTopping = whatImTopping;
     }
 
     @Override
@@ -14,12 +15,12 @@ public class Nuts implements Pastry {
     }
 
     @Override
-    public Pastry getInner() {
-        return pastry;
+    public Pastry getWhatImTopping() {
+        return whatImTopping;
     }
 
     @Override
     public double price() {
-        return pastry.price() + PRICE;
+        return whatImTopping.price() + PRICE;
     }
 }

@@ -27,7 +27,7 @@ public class PastryService {
         Stack<String> pastriesLevels = new Stack<>();
         while(pastry != null){
             pastriesLevels.add(pastry.name());
-            pastry = pastry.getInner();
+            pastry = pastry.getWhatImTopping();
         }
         return pastriesLevels;
     }

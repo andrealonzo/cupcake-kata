@@ -9,7 +9,7 @@ public class Cookie implements Pastry {
     }
 
     @Override
-    public Pastry getInner() {
+    public Pastry getWhatImTopping() {
         return null;
     }
 

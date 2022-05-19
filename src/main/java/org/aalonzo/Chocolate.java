@@ -1,12 +1,12 @@
 package org.aalonzo;
 
-public class Chocolate implements Pastry {
+public class Chocolate extends Topping {
 
     public static final double PRICE = .1;
     private final Pastry pastry;
 
     public Chocolate(Pastry pastry) {
-        super();
+        super(pastry);
         this.pastry = pastry;
     }
 
@@ -17,7 +17,7 @@ public class Chocolate implements Pastry {
     }
 
     @Override
-    public Pastry getInner() {
+    public Pastry getWhatImTopping() {
         return pastry;
     }
 

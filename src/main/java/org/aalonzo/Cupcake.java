@@ -10,7 +10,7 @@ public class Cupcake implements Pastry {
     }
 
     @Override
-    public Pastry getInner() {
+    public Pastry getWhatImTopping() {
         return null;
     }
 

@@ -9,16 +9,16 @@ public class NameTest {
     PastryService pastry = new PastryService();
     @Test
     public void cupcakeName(){
-        Cupcake cupcake = new Cupcake();
+        Pastry cupcake = new Cupcake();
 
-        assertEquals("Cupcake", pastry.getName(cupcake));
+        assertEquals("Cupcake", cupcake.name());
 
     }
     @Test
     public void cookieName(){
-        Cookie cookie = new Cookie();
+        Pastry cookie = new Cookie();
 
-        assertEquals("Cookie", pastry.getName(cookie));
+        assertEquals("Cookie", cookie.name());
 
     }
 

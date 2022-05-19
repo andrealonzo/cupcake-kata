@@ -2,7 +2,7 @@ package org.aalonzo;
 
 public interface Pastry {
 
-     Pastry getInner();
+     Pastry getWhatImTopping();
 
     double price();
     String name();

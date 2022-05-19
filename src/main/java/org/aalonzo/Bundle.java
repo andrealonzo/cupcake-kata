@@ -30,7 +30,7 @@ public class Bundle implements Pastry {
     }
 
     @Override
-    public Pastry getInner() {
+    public Pastry getWhatImTopping() {
         return pastry;
     }
 }
