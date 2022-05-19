@@ -18,5 +18,7 @@ Customer can choose a baked good and add unlimited toppings. It will display the
 Cupcake with chocolate and nuts and chocolate $1.40
 Cookie with chocolate and nuts and chocolate $2.40
 
+Save an empty order
 
+Add cookie to order then save
 
