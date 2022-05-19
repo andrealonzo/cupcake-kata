@@ -18,11 +18,6 @@ public class Nuts extends Topping {
     }
 
     @Override
-    public Pastry getWhatImTopping() {
-        return whatImTopping;
-    }
-
-    @Override
     public double price() {
         return whatImTopping.price() + PRICE;
     }

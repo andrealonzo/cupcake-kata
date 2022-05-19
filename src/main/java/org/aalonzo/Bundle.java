@@ -29,8 +29,4 @@ public class Bundle implements Pastry {
         return null;
     }
 
-    @Override
-    public Pastry getWhatImTopping() {
-        return pastry;
-    }
 }

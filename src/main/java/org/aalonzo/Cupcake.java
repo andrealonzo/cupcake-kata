@@ -9,10 +9,6 @@ public class Cupcake implements Pastry {
         return "Cupcake";
     }
 
-    @Override
-    public Pastry getWhatImTopping() {
-        return null;
-    }
 
     public double price() {
         return PRICE;

@@ -8,10 +8,6 @@ public class Cookie implements Pastry {
         return "Cookie";
     }
 
-    @Override
-    public Pastry getWhatImTopping() {
-        return null;
-    }
 
     public double price() {
         return PRICE;

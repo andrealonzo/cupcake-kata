@@ -19,10 +19,6 @@ public class Chocolate extends Topping {
         return whatImTopping.name() + " with chocolate";
     }
 
-    @Override
-    public Pastry getWhatImTopping() {
-        return whatImTopping;
-    }
 
     @Override
     public double price() {
