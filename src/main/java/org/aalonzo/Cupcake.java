@@ -10,7 +10,6 @@ public class Cupcake implements Pastry {
         return CUPCAKE;
     }
 
-
     public double price() {
         return PRICE;
     }
