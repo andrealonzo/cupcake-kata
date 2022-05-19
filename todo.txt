@@ -1,0 +1,7 @@
+Customer can see list baked goods that can be purchased.  It will display name and price.
+Cupcake $1.00
+Cookie $2.00
+Customer can the list of the list of toppings that can be added.  It will display name and price.
+
+Customer can choose a baked good and add 1 topping.  It will display the name and price
+
