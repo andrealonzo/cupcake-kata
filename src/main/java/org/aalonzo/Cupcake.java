@@ -3,10 +3,11 @@ package org.aalonzo;
 public class Cupcake implements Pastry {
 
     public static final int PRICE = 1;
+    public static final String CUPCAKE = "Cupcake";
 
     @Override
     public String name() {
-        return "Cupcake";
+        return CUPCAKE;
     }
 
 

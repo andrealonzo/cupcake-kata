@@ -10,7 +10,6 @@ public class Chocolate extends Topping {
         this.whatImTopping = whatImTopping;
     }
 
-
     @Override
     public String name() {
         if(whatImTopping instanceof Topping){

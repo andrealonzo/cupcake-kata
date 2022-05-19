@@ -7,7 +7,6 @@ public class Bundle implements Pastry {
 
     List<Pastry> pastries;
     public static final double DISCOUNT = .10;
-    private Pastry pastry;
 
     public Bundle() {
         pastries = new ArrayList<>();

@@ -3,6 +3,7 @@ package org.aalonzo;
 public class Nuts extends Topping {
 
     private static final double PRICE = .2;
+    public static final String NUTS = "nuts";
     private final Pastry whatImTopping;
     public Nuts(Pastry whatImTopping) {
         super(whatImTopping);
@@ -12,9 +13,9 @@ public class Nuts extends Topping {
     @Override
     public String name() {
         if(whatImTopping instanceof Topping){
-            return whatImTopping.name() + " and nuts";
+            return whatImTopping.name() + " and " + NUTS;
         }
-        return whatImTopping.name() + " with nuts";
+        return whatImTopping.name() + " with " + NUTS;
     }
 
     @Override
