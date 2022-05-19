@@ -1,4 +1,4 @@
-package org.aalonzo;
+package org.aalonzo.domain.pastry;
 
 public class Cookie implements Pastry {
     public static final int PRICE = 2;

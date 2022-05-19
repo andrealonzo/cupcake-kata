@@ -1,5 +1,8 @@
 package org.aalonzo;
 
+import org.aalonzo.domain.pastry.Cookie;
+import org.aalonzo.domain.pastry.Cupcake;
+import org.aalonzo.domain.pastry.Pastry;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

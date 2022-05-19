@@ -1,6 +1,8 @@
-package org.aalonzo;
+package org.aalonzo.domain.topping;
 
-public abstract class Topping implements Pastry{
+import org.aalonzo.domain.pastry.Pastry;
+
+public abstract class Topping implements Pastry {
     private final Pastry pastry;
 
     public Topping(Pastry pastry) {

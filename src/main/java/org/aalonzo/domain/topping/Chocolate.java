@@ -1,4 +1,6 @@
-package org.aalonzo;
+package org.aalonzo.domain.topping;
+
+import org.aalonzo.domain.pastry.Pastry;
 
 public class Chocolate extends Topping {
 
