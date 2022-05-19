@@ -20,9 +20,16 @@ public class BakeryTest {
 
     @Test
     public void cupcakeWithChocolate(){
-        Cupcake chocolateCupcake = new Chocolate(new Cupcake());
+        Decorator chocolateCupcake = new Chocolate(new Cupcake());
 
         assertEquals("Cupcake with chocolate", chocolateCupcake.toString());
+
+    }
+    @Test
+    public void cookieWithChocolate(){
+        Decorator chocolateCookie = new Chocolate(new Cookie());
+
+        assertEquals("Cookie with chocolate", chocolateCookie.toString());
 
     }
 

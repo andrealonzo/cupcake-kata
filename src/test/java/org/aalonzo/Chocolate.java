@@ -1,16 +1,17 @@
 package org.aalonzo;
 
-public class Chocolate extends Cupcake {
+public class Chocolate implements Decorator  {
 
-    private final Cupcake cupcake;
+    private final Decorator decorator;
 
-    public Chocolate(Cupcake cupcake) {
+    public Chocolate(Decorator decorator) {
         super();
-        this.cupcake = cupcake;
+        this.decorator = decorator;
     }
+
 
     @Override
     public String toString() {
-        return super.toString() + " with chocolate";
+        return decorator.toString() + " with chocolate";
     }
 }
