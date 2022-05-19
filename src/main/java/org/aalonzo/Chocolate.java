@@ -2,6 +2,7 @@ package org.aalonzo;
 
 public class Chocolate implements Decorator  {
 
+    public static final double PRICE = .1;
     private final Decorator decorator;
 
     public Chocolate(Decorator decorator) {
@@ -12,6 +13,16 @@ public class Chocolate implements Decorator  {
 
     @Override
     public String toString() {
-        return decorator.toString() + " with chocolate";
+        return "chocolate";
+    }
+
+    @Override
+    public Decorator getInner() {
+        return decorator;
+    }
+
+    @Override
+    public double price() {
+        return decorator.price() + PRICE;
     }
 }
