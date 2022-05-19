@@ -1,6 +1,7 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.pastry.Pastry;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,6 +10,7 @@ public class OrderTest {
 
 
     @Test
+    @Disabled
     public void buyingNothingCostsNothing(){
         Order order = new Order();
         double price = order.calculateTotalPrice();
@@ -16,6 +18,7 @@ public class OrderTest {
     }
 
     @Test
+    @Disabled
     public void addPastryOrderGetPrice(){
         Order order = new Order();
         Pastry pastry = new FakePastry();

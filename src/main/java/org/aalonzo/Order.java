@@ -8,23 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 @Entity
 public class Order {
+    @Id
     private Long id;
 
-    private final List<Pastry> pastries;
+  //  private final List<Pastry> pastries;
 
     public Order() {
-        pastries = new ArrayList<>();
+   //     pastries = new ArrayList<>();
     }
 
     public double calculateTotalPrice() {
-        return pastries.stream()
-                .map(Pastry::price)
-                .reduce(Double::sum)
-                .orElse(0.0);
+        return 0;
+//        return pastries.stream()
+//                .map(Pastry::price)
+//                .reduce(Double::sum)
+//                .orElse(0.0);
     }
 
     public void add(Pastry pastry) {
-        pastries.add(pastry);
+//        pastries.add(pastry);
 
     }
 
