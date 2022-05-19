@@ -1,11 +1,22 @@
 Customer can see list baked goods that can be purchased.  It will display name and price.
 Cupcake $1.00
 Cookie $2.00
+
 Customer can the list of the list of toppings that can be added.  It will display name and price.
+Chocolate  $.10
+Nuts  $.20
 
-Chocolate
-Nuts
+Customer can choose a baked good and add 1 topping.  It will display the name and price.
+Cupcake with chocolate $1.10
+Cookie with nuts $2.20
+
+Customer can choose a baked good and add 2 toppings.It will display the name and price.
+Cupcake with chocolate and nuts $1.30
+Cookie with chocolate and nuts $2.30
+
+Customer can choose a baked good and add unlimited toppings. It will display the name and price.
+Cupcake with chocolate and nuts and chocolate $1.40
+Cookie with chocolate and nuts and chocolate $2.40
 
 
-Customer can choose a baked good and add 1 topping.  It will display the name and price
 
