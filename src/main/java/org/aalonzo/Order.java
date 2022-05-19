@@ -1,20 +1,30 @@
 package org.aalonzo;
 
+import jdk.jfr.DataAmount;
 import org.aalonzo.domain.pastry.Pastry;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
+@Table(name="order")
 public class Order {
     @Id
     private Long id;
+    private String name;
 
-  //  private final List<Pastry> pastries;
+
+    //  private final List<Pastry> pastries;
+
+    public Order(String name) {
+   //     pastries = new ArrayList<>();
+        this.name = name;
+    }
 
     public Order() {
-   //     pastries = new ArrayList<>();
+
     }
 
     public double calculateTotalPrice() {
@@ -37,5 +47,13 @@ public class Order {
     @Id
     public Long getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
