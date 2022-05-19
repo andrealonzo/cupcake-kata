@@ -1,8 +1,8 @@
 package org.aalonzo;
 
-public class Cupcake {
+public class Cookie {
     @Override
     public String toString() {
-        return "Cupcake";
+        return "Cookie";
     }
 }

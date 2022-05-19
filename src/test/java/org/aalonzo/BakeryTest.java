@@ -8,7 +8,12 @@ public class BakeryTest {
     @Test
     public void cupcakeName(){
         Cupcake cupcake = new Cupcake();
-        assertEquals("cupcake", cupcake.toString());
+        assertEquals("Cupcake", cupcake.toString());
+
+    } @Test
+    public void cookieName(){
+        Cookie cookie = new Cookie();
+        assertEquals("Cookie", cookie.toString());
 
     }
 
