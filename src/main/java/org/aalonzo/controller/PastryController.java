@@ -2,6 +2,7 @@ package org.aalonzo.controller;
 
 import org.aalonzo.PastryRepository;
 import org.aalonzo.domain.pastry.Cookie;
+import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,13 @@ public class PastryController {
         return repository.findAll();
     }
     @PostMapping(path="/pastry")
-    public @ResponseBody Pastry add(){
-        Pastry pastry = new Cookie();
+    public @ResponseBody Pastry add(@RequestParam String type){
+        Pastry pastry;
+        if(type.equalsIgnoreCase("cookie")){
+             pastry = new Cookie();
+        }else{
+            pastry = new Cupcake();
+        }
         repository.save(pastry);
         return pastry;
     }
