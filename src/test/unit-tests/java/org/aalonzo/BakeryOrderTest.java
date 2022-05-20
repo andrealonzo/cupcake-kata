@@ -1,7 +1,6 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.pastry.Pastry;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,13 +31,10 @@ public class BakeryOrderTest {
         }
 
         @Override
-        public String name() {
-            return "fake pastry";
-        }
-
-
         public String getName() {
             return "fake pastry";
         }
+
+
     }
 }

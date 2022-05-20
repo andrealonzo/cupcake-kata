@@ -15,43 +15,43 @@ public class NameTest {
     public void cupcakeName(){
         Pastry cupcake = new Cupcake();
 
-        assertEquals("Cupcake", cupcake.name());
+        assertEquals("Cupcake", cupcake.getName());
 
     }
     @Test
     public void cookieName(){
         Pastry cookie = new Cookie();
 
-        assertEquals("Cookie", cookie.name());
+        assertEquals("Cookie", cookie.getName());
 
     }
 
     @Test
     public void cupcakeWithChocolate(){
         Pastry chocolateCupcake = new Chocolate(new Cupcake());
-        assertEquals("Cupcake with chocolate", chocolateCupcake.name());
+        assertEquals("Cupcake with chocolate", chocolateCupcake.getName());
     }
     @Test
     public void cookieWithChocolate(){
         Pastry chocolateCookie = new Chocolate(new Cookie());
-        assertEquals("Cookie with chocolate", chocolateCookie.name());
+        assertEquals("Cookie with chocolate", chocolateCookie.getName());
 
     }
     @Test
     public void cookieWithChocolateAndNuts(){
         Pastry chocolateCookieNuts = new Nuts(new Chocolate(new Cookie()));
-        assertEquals("Cookie with chocolate and nuts", chocolateCookieNuts.name());
+        assertEquals("Cookie with chocolate and nuts", chocolateCookieNuts.getName());
 
     }
     @Test
     public void cookieWithNutsAndChocolate(){
         Pastry chocolateCookieNuts = new Chocolate(new Nuts(new Cookie()));
-        assertEquals("Cookie with nuts and chocolate", chocolateCookieNuts.name());
+        assertEquals("Cookie with nuts and chocolate", chocolateCookieNuts.getName());
     }
     @Test
     public void cupcakeWithChocolateAndNutsAndChocolate(){
         Pastry cupcake = new Chocolate(new Nuts(new Chocolate(new Cupcake())));
-        assertEquals("Cupcake with chocolate and nuts and chocolate", cupcake.name());
+        assertEquals("Cupcake with chocolate and nuts and chocolate", cupcake.getName());
     }
 
 

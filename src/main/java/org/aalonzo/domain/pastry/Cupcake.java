@@ -9,14 +9,10 @@ public class Cupcake extends Pastry {
     public static final String CUPCAKE = "Cupcake";
 
     @Override
-    public String name() {
-        return CUPCAKE;
-    }
-
-
     public String getName() {
         return CUPCAKE;
     }
+
 
     public double price() {
         return PRICE;

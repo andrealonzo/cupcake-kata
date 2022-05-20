@@ -13,16 +13,11 @@ public class Chocolate extends Topping {
     }
 
     @Override
-    public String name() {
-        if(whatImTopping instanceof Topping){
-            return whatImTopping.name() + " and " + CHOCOLATE;
-        }
-        return whatImTopping.name() + " with " + CHOCOLATE;
-    }
-
-
     public String getName() {
-        return CHOCOLATE;
+        if(whatImTopping instanceof Topping){
+            return whatImTopping.getName() + " and " + CHOCOLATE;
+        }
+        return whatImTopping.getName() + " with " + CHOCOLATE;
     }
 
 

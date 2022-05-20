@@ -15,9 +15,7 @@ public abstract class Pastry {
 
     public abstract double price();
 
-    public abstract String name();
-
-    public abstract String getName() ;
+    public abstract String getName();
 
 
     public Long getId() {

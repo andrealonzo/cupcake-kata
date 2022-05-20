@@ -27,12 +27,8 @@ public class Bundle extends Pastry {
     }
 
     @Override
-    public String name() {
-        return null;
-    }
-
     public String getName() {
-        return BUNDLE;
+        return null;
     }
 
 

@@ -9,10 +9,6 @@ public class Cookie extends Pastry {
     public static final String COOKIE = "Cookie";
 
     @Override
-    public String name() {
-        return COOKIE;
-    }
-
     public String getName() {
         return COOKIE;
     }

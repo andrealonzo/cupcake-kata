@@ -1,6 +1,7 @@
 package org.aalonzo.controller;
 
 import org.aalonzo.domain.pastry.Cookie;
+import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,19 +28,21 @@ public class PastryControllerTest {
                 .andExpect(content().string(containsString("Hello")));
     }
 
-    @Test
-    public void showEmptyListOfPastries() throws Exception {
-        this.mockMvc.perform(get("/v1/pastry")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().json("[]"));
-    }
-
 
     @Test
-    public void addPastryAndShow() throws Exception {
+    public void addCookieAndShow() throws Exception {
         this.mockMvc.perform(post("/v1/pastry"));
-        Pastry cookie = new Cookie();
+        Pastry pastry = new Cookie();
         this.mockMvc.perform(get("/v1/pastry")).andDo(print()).andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].name").value(cookie.getName()));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].name").value(pastry.getName()));
+
+    }
+    @Test
+    public void addCupcakeAndShow() throws Exception {
+        this.mockMvc.perform(post("/v1/pastry"));
+        Pastry pastry = new Cupcake();
+        this.mockMvc.perform(get("/v1/pastry")).andDo(print()).andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].name").value(pastry.getName()));
 
 //        this.mockMvc.perform(get("/v1/pastry")).andDo(print()).andExpect(status().isOk())
 //                .andExpect(content().json("[]"));
