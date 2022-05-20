@@ -5,6 +5,7 @@ import org.aalonzo.domain.pastry.Pastry;
 public class Chocolate extends Topping {
 
     public static final double PRICE = .1;
+    public static final String CHOCOLATE = "chocolate";
     private final Pastry whatImTopping;
 
     public Chocolate(Pastry whatImTopping) {
@@ -14,9 +15,14 @@ public class Chocolate extends Topping {
     @Override
     public String name() {
         if(whatImTopping instanceof Topping){
-            return whatImTopping.name() + " and chocolate";
+            return whatImTopping.name() + " and " + CHOCOLATE;
         }
-        return whatImTopping.name() + " with chocolate";
+        return whatImTopping.name() + " with " + CHOCOLATE;
+    }
+
+
+    public String getName() {
+        return CHOCOLATE;
     }
 
 

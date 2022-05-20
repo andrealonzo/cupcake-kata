@@ -19,6 +19,10 @@ public class Nuts extends Topping {
         return whatImTopping.name() + " with " + NUTS;
     }
 
+    public String getName() {
+        return NUTS;
+    }
+
     @Override
     public double price() {
         return whatImTopping.price() + PRICE;

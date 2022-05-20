@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Bundle extends Pastry {
 
+    public static final String BUNDLE = "Bundle";
     List<Pastry> pastries;
     public static final double DISCOUNT = .10;
 
@@ -28,6 +29,10 @@ public class Bundle extends Pastry {
     @Override
     public String name() {
         return null;
+    }
+
+    public String getName() {
+        return BUNDLE;
     }
 
 

@@ -13,6 +13,10 @@ public class Cookie extends Pastry {
         return COOKIE;
     }
 
+    public String getName() {
+        return COOKIE;
+    }
+
 
     public double price() {
         return PRICE;

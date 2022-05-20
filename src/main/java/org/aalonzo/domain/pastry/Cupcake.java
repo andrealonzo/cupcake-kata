@@ -13,6 +13,11 @@ public class Cupcake extends Pastry {
         return CUPCAKE;
     }
 
+
+    public String getName() {
+        return CUPCAKE;
+    }
+
     public double price() {
         return PRICE;
     }

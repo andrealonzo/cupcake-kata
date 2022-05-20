@@ -35,5 +35,10 @@ public class BakeryOrderTest {
         public String name() {
             return "fake pastry";
         }
+
+
+        public String getName() {
+            return "fake pastry";
+        }
     }
 }
