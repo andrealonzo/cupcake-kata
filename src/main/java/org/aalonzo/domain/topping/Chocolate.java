@@ -8,7 +8,6 @@ public class Chocolate extends Topping {
     private final Pastry whatImTopping;
 
     public Chocolate(Pastry whatImTopping) {
-        super(whatImTopping);
         this.whatImTopping = whatImTopping;
     }
 

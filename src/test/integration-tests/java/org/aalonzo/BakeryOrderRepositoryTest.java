@@ -34,6 +34,7 @@ public class BakeryOrderRepositoryTest {
         pastryRepository.save(cupcake);
         order.add(cupcake);
         bakeryRepository.save(order);
+
         BakeryOrder actualOrder = bakeryRepository.findById(order.getId()).get();
         assertEquals(1, bakeryRepository.count());
         assertEquals(order, actualOrder);
