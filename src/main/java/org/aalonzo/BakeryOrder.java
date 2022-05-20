@@ -13,7 +13,7 @@ public class BakeryOrder {
     private Long id;
     private String name;
 
-    @Transient
+    @OneToMany
     private final List<Pastry> pastries;
 
     public BakeryOrder(String name) {
@@ -35,6 +35,9 @@ public class BakeryOrder {
     public void add(Pastry pastry) {
         pastries.add(pastry);
 
+    }
+    public List<Pastry> getPastries(){
+        return this.pastries;
     }
 
     public void setId(Long id) {
