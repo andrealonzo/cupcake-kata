@@ -13,29 +13,29 @@ public class PriceTest {
     @Test
     public void cupcakePrice() {
         Pastry cupcake = new Cupcake();
-        assertEquals(1, cupcake.price());
+        assertEquals(1, cupcake.getPrice());
     }
 
     @Test
     public void cookiePrice() {
         Pastry cookie = new Cookie();
-        assertEquals(2, cookie.price());
+        assertEquals(2, cookie.getPrice());
     }
 
     @Test
     public void cupcakeWithChocolatePrice() {
         Pastry cupcake = new Chocolate(new Cupcake());
-        assertEquals(1.1, cupcake.price());
+        assertEquals(1.1, cupcake.getPrice());
     }
     @Test
     public void cookieWithChocolatePrice() {
         Pastry cookie = new Chocolate(new Cookie());
-        assertEquals(2.1, cookie.price());
+        assertEquals(2.1, cookie.getPrice());
     }
 
     @Test
     public void cookieWithNutsPrice() {
         Pastry cookie = new Nuts(new Cookie());
-        assertEquals(2.2, cookie.price());
+        assertEquals(2.2, cookie.getPrice());
     }
 }

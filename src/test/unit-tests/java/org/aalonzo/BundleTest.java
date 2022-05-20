@@ -14,7 +14,7 @@ public class BundleTest  {
     public void oneCupcakeBundle(){
         Pastry pastry = new Cupcake();
         bundle.add(pastry);
-        assertEquals(.90, bundle.price());
+        assertEquals(.90, bundle.getPrice());
     }
     @Test
     public void oneCupcakeOneCookieBundle(){
@@ -22,7 +22,7 @@ public class BundleTest  {
         Pastry cookie = new Cookie();
         bundle.add(cupcake);
         bundle.add(cookie);
-        assertEquals(2.70, bundle.price());
+        assertEquals(2.70, bundle.getPrice());
     }
 
     @Test
@@ -33,7 +33,7 @@ public class BundleTest  {
         bundle.add(cupcake1);
         bundle.add(cupcake2);
         bundle.add(cookie);
-        assertEquals(3.60, bundle.price());
+        assertEquals(3.60, bundle.getPrice());
     }
     @Test
     public void bundleWithABundle(){
@@ -45,6 +45,6 @@ public class BundleTest  {
         bundle.add(cupcake2);
         bundle.add(cookie);
         outerBundle.add(bundle);
-        assertEquals(3.24, outerBundle.price());
+        assertEquals(3.24, outerBundle.getPrice());
     }
 }

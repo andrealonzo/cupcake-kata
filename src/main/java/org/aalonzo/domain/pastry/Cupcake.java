@@ -14,7 +14,7 @@ public class Cupcake extends Pastry {
     }
 
 
-    public double price() {
+    public double getPrice() {
         return PRICE;
     }
 

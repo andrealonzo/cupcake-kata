@@ -11,19 +11,9 @@ public abstract class Pastry {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    private String name;
-
-    public abstract double price();
+    public abstract double getPrice();
 
     public abstract String getName();
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 }

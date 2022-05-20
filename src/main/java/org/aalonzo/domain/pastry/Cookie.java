@@ -14,7 +14,7 @@ public class Cookie extends Pastry {
     }
 
 
-    public double price() {
+    public double getPrice() {
         return PRICE;
     }
 

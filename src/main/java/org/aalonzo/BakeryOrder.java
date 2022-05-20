@@ -27,7 +27,7 @@ public class BakeryOrder {
 
     public double calculateTotalPrice() {
         return pastries.stream()
-                .map(Pastry::price)
+                .map(Pastry::getPrice)
                 .reduce(Double::sum)
                 .orElse(0.0);
     }

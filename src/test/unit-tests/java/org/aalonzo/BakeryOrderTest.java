@@ -26,7 +26,7 @@ public class BakeryOrderTest {
 
     private static class FakePastry extends Pastry {
         @Override
-        public double price() {
+        public double getPrice() {
             return 1;
         }
 

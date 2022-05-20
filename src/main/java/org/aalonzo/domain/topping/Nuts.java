@@ -20,7 +20,7 @@ public class Nuts extends Topping {
     }
 
     @Override
-    public double price() {
-        return whatImTopping.price() + PRICE;
+    public double getPrice() {
+        return whatImTopping.getPrice() + PRICE;
     }
 }

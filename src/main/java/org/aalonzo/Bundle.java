@@ -20,8 +20,8 @@ public class Bundle extends Pastry {
     }
 
 
-    public double price() {
-        return pastries.stream().map(p -> p.price() - p.price() * DISCOUNT)
+    public double getPrice() {
+        return pastries.stream().map(p -> p.getPrice() - p.getPrice() * DISCOUNT)
                 .reduce(0.0,
                         Double::sum);
     }
