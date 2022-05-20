@@ -28,5 +28,11 @@ public class PastryController {
         repository.save(pastry);
         return pastry;
     }
+    @DeleteMapping(path="/pastry/delete/all")
+    public @ResponseBody void deleteAll(){
+        repository.deleteAll();
+    }
+
+
 
 }

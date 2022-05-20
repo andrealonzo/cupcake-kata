@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -36,6 +36,20 @@ public class PastryControllerTest {
     @Test
     public void addCupcakeAndShow() throws Exception {
         verifyPastry(new Cupcake());
+    }
+
+    @Test
+    public void deleteAllPastries() throws Exception {
+        Pastry pastry = new Cupcake();
+
+        //add pastry
+        this.mockMvc.perform(post("/v1/pastry").param("type", pastry.getName()));
+
+        //delete all cupcakes
+        this.mockMvc.perform(delete("/v1/pastry/delete/all"));
+
+        //checks everything is empty
+        this.mockMvc.perform(get("/v1/pastry")).andDo(print()).andExpect(content().json("[]"));
     }
 
     private void verifyPastry(Pastry pastry) throws Exception {
