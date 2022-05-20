@@ -9,14 +9,14 @@ import org.springframework.boot.web.server.LocalServerPort;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HttpRequestTest {
+public class HttpRequestWSTest {
     @LocalServerPort
     private int port;
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
-    public void greetingShouldReturnDefaultMessage() throws Exception {
+    public void greetingShouldReturnDefaultMessage() {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
                 String.class)).contains("Hello");
     }
