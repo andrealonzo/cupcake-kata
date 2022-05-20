@@ -3,5 +3,6 @@ package org.aalonzo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-public interface OrderRepository extends CrudRepository<Order,Long> {
+@Repository
+public interface BakeryRepository extends CrudRepository<BakeryOrder,Long> {
 }

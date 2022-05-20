@@ -6,28 +6,26 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OrderTest {
+public class BakeryOrderTest {
 
 
     @Test
-    @Disabled
     public void buyingNothingCostsNothing(){
-        Order order = new Order();
+        BakeryOrder order = new BakeryOrder();
         double price = order.calculateTotalPrice();
         assertEquals(0, price, .01);
     }
 
     @Test
-    @Disabled
     public void addPastryOrderGetPrice(){
-        Order order = new Order();
+        BakeryOrder order = new BakeryOrder();
         Pastry pastry = new FakePastry();
         order.add(pastry);
         double price = order.calculateTotalPrice();
         assertEquals(1, price, .01);
     }
 
-    private class FakePastry implements Pastry {
+    private static class FakePastry implements Pastry {
         @Override
         public double price() {
             return 1;
