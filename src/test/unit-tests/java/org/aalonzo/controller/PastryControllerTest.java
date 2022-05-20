@@ -22,4 +22,10 @@ public class PastryControllerTest {
         this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello")));
     }
+
+    @Test
+    public void showEmptyListOfPastries() throws Exception {
+        this.mockMvc.perform(get("/v1/pastry")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("[]"));
+    }
 }
