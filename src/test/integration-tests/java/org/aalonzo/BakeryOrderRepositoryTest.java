@@ -12,8 +12,12 @@ public class BakeryOrderRepositoryTest {
     private BakeryRepository repository;
     @Test
     public void simpleTest(){
-
         assertEquals(0, repository.count());
-
+    }
+    @Test
+    public void addOneOrderShowsOneInRepo(){
+        BakeryOrder order = new BakeryOrder("order1");
+        repository.save(order);
+        assertEquals(1, repository.count());
     }
 }

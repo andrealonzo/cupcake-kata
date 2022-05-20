@@ -2,15 +2,14 @@ package org.aalonzo;
 
 import org.aalonzo.domain.pastry.Pastry;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class BakeryOrder {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
 
@@ -42,7 +41,7 @@ public class BakeryOrder {
         this.id = id;
     }
 
-    @Id
+
     public Long getId() {
         return id;
     }
