@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PastryRepository extends CrudRepository<Cookie,Long> {
+public interface PastryRepository extends CrudRepository<Pastry,Long> {
 }

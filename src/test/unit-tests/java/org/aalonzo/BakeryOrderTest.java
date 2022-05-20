@@ -25,7 +25,7 @@ public class BakeryOrderTest {
         assertEquals(1, price, .01);
     }
 
-    private static class FakePastry implements Pastry {
+    private static class FakePastry extends Pastry {
         @Override
         public double price() {
             return 1;

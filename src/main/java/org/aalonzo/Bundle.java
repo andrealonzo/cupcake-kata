@@ -5,7 +5,7 @@ import org.aalonzo.domain.pastry.Pastry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bundle implements Pastry {
+public class Bundle extends Pastry {
 
     List<Pastry> pastries;
     public static final double DISCOUNT = .10;

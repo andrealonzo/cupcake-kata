@@ -4,10 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Cupcake implements Pastry {
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Cupcake extends Pastry {
     public static final int PRICE = 1;
     public static final String CUPCAKE = "Cupcake";
 
@@ -20,12 +17,4 @@ public class Cupcake implements Pastry {
         return PRICE;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
-    public Long getId() {
-        return id;
-    }
 }

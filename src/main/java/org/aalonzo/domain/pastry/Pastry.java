@@ -1,9 +1,17 @@
 package org.aalonzo.domain.pastry;
 
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
-@MappedSuperclass
-public interface Pastry {
-    double price();
-    String name();
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Pastry {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
+
+    public abstract double price();
+
+    public abstract String name();
+
 }
