@@ -1,6 +1,5 @@
-package org.aalonzo;
+package org.aalonzo.respository;
 
-import org.aalonzo.domain.pastry.Cookie;
 import org.aalonzo.domain.pastry.Pastry;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

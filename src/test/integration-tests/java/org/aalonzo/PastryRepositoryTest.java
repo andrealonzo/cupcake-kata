@@ -3,6 +3,7 @@ package org.aalonzo;
 import org.aalonzo.domain.pastry.Cookie;
 import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.respository.PastryRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

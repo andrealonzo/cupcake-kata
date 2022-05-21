@@ -2,11 +2,13 @@ package org.aalonzo;
 
 import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.respository.BakeryRepository;
+import org.aalonzo.respository.PastryRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import static junit.framework.TestCase.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
@@ -35,6 +37,7 @@ public class BakeryOrderRepositoryTest {
         order.add(cupcake);
         bakeryRepository.save(order);
 
+        assertTrue(bakeryRepository.findById(order.getId()).isPresent());
         BakeryOrder actualOrder = bakeryRepository.findById(order.getId()).get();
         assertEquals(1, bakeryRepository.count());
         assertEquals(order, actualOrder);

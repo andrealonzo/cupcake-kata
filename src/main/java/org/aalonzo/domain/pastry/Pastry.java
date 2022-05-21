@@ -9,11 +9,14 @@ public abstract class Pastry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
 
     public abstract double getPrice();
 
     public abstract String getName();
 
 
+    public Long getId() {
+        return id;
+    }
 }
