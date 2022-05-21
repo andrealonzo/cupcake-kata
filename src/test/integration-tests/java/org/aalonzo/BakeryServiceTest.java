@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static junit.framework.TestCase.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -59,8 +58,6 @@ public class BakeryServiceTest {
         BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
         Cupcake cupcake = pastryRepository.save(new Cupcake());
         Pastry cupcakeWithNuts = pastryRepository.save(new Nuts(cupcake));
-
-        Pastry expectedPastry = new Nuts(new Cupcake());
 
         order.add(cupcakeWithNuts);
         BakeryOrder updatedOrder = service.update(order);

@@ -40,11 +40,6 @@ public class BakeryOrder {
         return this.pastries;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
     public Long getId() {
         return id;
     }
@@ -53,7 +48,4 @@ public class BakeryOrder {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

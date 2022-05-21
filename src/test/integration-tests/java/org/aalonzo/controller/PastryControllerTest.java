@@ -73,7 +73,6 @@ public class PastryControllerTest {
 
         this.mockMvc.perform(delete("/v1/pastry/delete/").param("id", pastry.getId().toString()));
 
-        //checks everything is empty
         assertEquals(0, repository.count());
     }
 

@@ -36,5 +36,4 @@ public class BakeryTest {
         assertTrue(pastries.contains(cookie));
 
     }
-    //new bakery has no pastries
 }
