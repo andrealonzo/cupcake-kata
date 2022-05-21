@@ -2,10 +2,7 @@ package org.aalonzo.domain.topping;
 
 import org.aalonzo.domain.pastry.Pastry;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -13,7 +10,7 @@ public class Chocolate extends Topping {
 
     public static final double PRICE = .1;
     public static final String CHOCOLATE = "chocolate";
-    @Transient
+    @OneToOne
     private final Pastry whatImTopping;
 
 
@@ -28,6 +25,9 @@ public class Chocolate extends Topping {
 
     @Override
     public String getName() {
+        if (whatImTopping == null) {
+            return "";
+        }
         if(whatImTopping instanceof Topping){
             return whatImTopping.getName() + " and " + CHOCOLATE;
         }
