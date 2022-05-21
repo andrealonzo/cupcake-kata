@@ -1,6 +1,6 @@
 package org.aalonzo.controller;
 
-import org.aalonzo.respository.PastryRepository;
+import org.aalonzo.repository.PastryRepository;
 import org.aalonzo.domain.pastry.Cookie;
 import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;

@@ -3,7 +3,7 @@ package org.aalonzo.service;
 import org.aalonzo.domain.pastry.Cookie;
 import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
-import org.aalonzo.respository.PastryRepository;
+import org.aalonzo.repository.PastryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

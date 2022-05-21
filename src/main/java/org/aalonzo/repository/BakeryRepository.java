@@ -1,4 +1,4 @@
-package org.aalonzo.respository;
+package org.aalonzo.repository;
 
 import org.aalonzo.BakeryOrder;
 import org.springframework.data.repository.CrudRepository;

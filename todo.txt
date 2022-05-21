@@ -2,7 +2,7 @@ Customer can see list baked goods that can be purchased.  It will display name a
 Cupcake $1.00
 Cookie $2.00
 
-Customer can the list of the list of toppings that can be added.  It will display name and price.
+Customer can the see of the list of toppings that can be added.  It will display name and price.
 Chocolate  $.10
 Nuts  $.20
 
