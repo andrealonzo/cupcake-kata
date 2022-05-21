@@ -63,6 +63,7 @@ public class BakeryServiceTest {
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
         assertEquals("Cupcake with nuts", updatedOrder.getPastries().get(0).getName());
+        assertEquals(1.2, updatedOrder.calculateTotalPrice(), .01);
     }
 
     @Test
@@ -77,6 +78,7 @@ public class BakeryServiceTest {
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
         assertEquals("Cookie with nuts and chocolate", updatedOrder.getPastries().get(0).getName());
+        assertEquals(2.3, updatedOrder.calculateTotalPrice(),.01);
     }
 
 }
