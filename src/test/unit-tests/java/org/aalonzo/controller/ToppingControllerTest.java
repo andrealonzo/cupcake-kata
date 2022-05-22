@@ -13,4 +13,10 @@ public class ToppingControllerTest {
         controller.findAll();
         verify(mockService, times(1)).findAll();
     }
+    @Test
+    public void addCallsServiceAdd(){
+        String type = "type";
+        controller.add(type);
+        verify(mockService, times(1)).add(type);
+    }
 }
