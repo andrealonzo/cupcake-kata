@@ -11,7 +11,6 @@ import static org.mockito.Mockito.*;
 public class BakeryServiceTest {
 
     public static final String GENERIC_ORDER_NAME = "order1";
-    //TODO find out how to mock so we don't have to load full context
 
     BakeryRepository mockRepo = mock(BakeryRepository.class);
     BakeryService service = new BakeryService(mockRepo);

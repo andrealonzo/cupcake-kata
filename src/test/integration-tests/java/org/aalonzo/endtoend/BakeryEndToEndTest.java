@@ -64,8 +64,8 @@ public class BakeryEndToEndTest {
         List<Pastry> response = this.restTemplate.getForObject("http://localhost:" + port + "/v1/pastry",
                 List.class);
         assertEquals(2,response.size());
-        assertEquals("Cookie",response.get(0).getName());
-        assertEquals("Cupcake",response.get(0).getName());
+        assertEquals("Cookie",response.get(0).generateName());
+        assertEquals("Cupcake",response.get(0).generateName());
     }
 
 

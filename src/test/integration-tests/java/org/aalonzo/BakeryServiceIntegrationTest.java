@@ -38,7 +38,7 @@ public class BakeryServiceIntegrationTest {
         order.add(cookie);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
-        assertEquals(cookie.getName(), updatedOrder.getPastries().get(0).getName());
+        assertEquals(cookie.generateName(), updatedOrder.getPastries().get(0).generateName());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class BakeryServiceIntegrationTest {
         order.add(cupcake);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
-        assertEquals(cupcake.getName(), updatedOrder.getPastries().get(0).getName());
+        assertEquals(cupcake.generateName(), updatedOrder.getPastries().get(0).generateName());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class BakeryServiceIntegrationTest {
         order.add(cupcakeWithNuts);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
-        assertEquals("Cupcake with nuts", updatedOrder.getPastries().get(0).getName());
+        assertEquals("Cupcake with nuts", updatedOrder.getPastries().get(0).generateName());
         assertEquals(1.2, updatedOrder.calculateTotalPrice(), .01);
     }
 
@@ -75,7 +75,7 @@ public class BakeryServiceIntegrationTest {
         order.add(cupcakeWithNutsAndChocolate);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
-        assertEquals("Cookie with nuts and chocolate", updatedOrder.getPastries().get(0).getName());
+        assertEquals("Cookie with nuts and chocolate", updatedOrder.getPastries().get(0).generateName());
         assertEquals(2.3, updatedOrder.calculateTotalPrice(),.01);
     }
 

@@ -9,46 +9,58 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class NameTest {
 
     @Test
-    public void cupcakeName(){
+    public void cupcakeName() {
         Pastry cupcake = new Pastry("Cupcake", 1.0);
-
-        assertEquals("Cupcake", cupcake.getName());
+        assertEquals("Cupcake", cupcake.generateName());
 
     }
+
     @Test
-    public void cookieName(){
+    public void cookieName() {
         Pastry cookie = new Pastry("Cookie", 2.0);
-
-        assertEquals("Cookie", cookie.getName());
+        assertEquals("Cookie", cookie.generateName());
 
     }
 
     @Test
-    public void cupcakeWithChocolate(){
-        Pastry chocolateCupcake = new Topping("chocolate", .1,(new Pastry("Cupcake", 1.0)));
-        assertEquals("Cupcake with chocolate", chocolateCupcake.getName());
+    public void cupcakeWithChocolate() {
+        Pastry cupcake = new Pastry("Cupcake", 1.0);
+        cupcake.addTopping(new Topping("chocolate", .1));
+        assertEquals("Cupcake with chocolate", cupcake.generateName());
     }
+
     @Test
-    public void cookieWithChocolate(){
-        Pastry chocolateCookie = new Topping("chocolate", .1,(new Pastry("Cookie", 2.0)));
-        assertEquals("Cookie with chocolate", chocolateCookie.getName());
+    public void cookieWithChocolate() {
+        Pastry chocolateCookie = new Pastry("Cookie", 2.0);
+        chocolateCookie.addTopping(new Topping("chocolate", .1));
+        assertEquals("Cookie with chocolate", chocolateCookie.generateName());
 
     }
+
     @Test
-    public void cookieWithChocolateAndNuts(){
-        Pastry chocolateCookieNuts = new Topping("nuts", .2,new Topping("chocolate", .1,(new Pastry("Cookie", 2.0))));
-        assertEquals("Cookie with chocolate and nuts", chocolateCookieNuts.getName());
+    public void cookieWithChocolateAndNuts() {
+        Pastry chocolateCookieNuts = new Pastry("Cookie", 2.0);
+        chocolateCookieNuts.addTopping(new Topping("chocolate", .1));
+        chocolateCookieNuts.addTopping(new Topping("nuts", .2));
+        assertEquals("Cookie with chocolate and nuts", chocolateCookieNuts.generateName());
 
     }
+
     @Test
-    public void cookieWithNutsAndChocolate(){
-        Pastry chocolateCookieNuts = new Topping("chocolate", .1,(new Topping("nuts", .2,new Pastry("Cookie", 2.0))));
-        assertEquals("Cookie with nuts and chocolate", chocolateCookieNuts.getName());
+    public void cookieWithNutsAndChocolate() {
+        Pastry chocolateCookieNuts = new Pastry("Cookie", 2.0);
+        chocolateCookieNuts.addTopping(new Topping("nuts", .2));
+        chocolateCookieNuts.addTopping(new Topping("chocolate", .1));
+        assertEquals("Cookie with nuts and chocolate", chocolateCookieNuts.generateName());
     }
+
     @Test
-    public void cupcakeWithChocolateAndNutsAndChocolate(){
-        Pastry cupcake = new Topping("chocolate", .1,(new Topping("nuts", .2,new Topping("chocolate", .1,(new Pastry("Cupcake", 1.0))))));
-        assertEquals("Cupcake with chocolate and nuts and chocolate", cupcake.getName());
+    public void cupcakeWithChocolateAndNutsAndChocolate() {
+        Pastry cupcake = new Pastry("Cupcake", 1.0);
+        cupcake.addTopping(new Topping("chocolate", .1));
+        cupcake.addTopping(new Topping("nuts", .2));
+        cupcake.addTopping(new Topping("chocolate", .1));
+        assertEquals("Cupcake with chocolate and nuts and chocolate", cupcake.generateName());
     }
 
 

@@ -76,7 +76,7 @@ public class PastryControllerTest {
 
     private void addAndVerifyPastry(Pastry pastry) throws Exception {
         assertEquals(0, repository.count());
-        this.mockMvc.perform(post("/v1/pastry").param("type", pastry.getName()));
+        this.mockMvc.perform(post("/v1/pastry").param("type", pastry.generateName()));
         assertEquals(1, repository.count());
     }
 }

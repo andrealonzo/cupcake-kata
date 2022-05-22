@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/v1")
 public class ToppingController {
-    private final ToppingService service;
+    private ToppingService service;
 
     @Autowired
     public ToppingController(ToppingService service) {

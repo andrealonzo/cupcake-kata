@@ -32,13 +32,14 @@ public class Topping extends Pastry {
 
     @Override
     public String getName() {
-        if (whatImTopping == null) {
-            return "";
-        }
-        if (whatImTopping instanceof Topping) {
-            return whatImTopping.getName() + " and " + name;
-        }
-        return whatImTopping.getName() + " with " + name;
+        return this.name;
+//        if (whatImTopping == null) {
+//            return "";
+//        }
+//        if (whatImTopping instanceof Topping) {
+//            return whatImTopping.getName() + " and " + name;
+//        }
+//        return whatImTopping.getName() + " with " + name;
     }
 
     @Override
