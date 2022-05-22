@@ -1,6 +1,5 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.pastry.Cookie;
 import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.aalonzo.domain.topping.Chocolate;
@@ -18,7 +17,7 @@ public class PriceTest {
 
     @Test
     public void cookiePrice() {
-        Pastry cookie = new Cookie();
+        Pastry cookie = new Pastry("Cookie", 2.0);
         assertEquals(2, cookie.getPrice());
     }
 
@@ -29,13 +28,13 @@ public class PriceTest {
     }
     @Test
     public void cookieWithChocolatePrice() {
-        Pastry cookie = new Chocolate(new Cookie());
+        Pastry cookie = new Chocolate(new Pastry("Cookie", 2.0));
         assertEquals(2.1, cookie.getPrice());
     }
 
     @Test
     public void cookieWithNutsPrice() {
-        Pastry cookie = new Nuts(new Cookie());
+        Pastry cookie = new Nuts(new Pastry("Cookie", 2.0));
         assertEquals(2.2, cookie.getPrice());
     }
 

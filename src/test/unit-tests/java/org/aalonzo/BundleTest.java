@@ -1,6 +1,5 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.pastry.Cookie;
 import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.junit.jupiter.api.Test;
@@ -19,7 +18,7 @@ public class BundleTest  {
     @Test
     public void oneCupcakeOneCookieBundle(){
         Pastry cupcake = new Cupcake();
-        Pastry cookie = new Cookie();
+        Pastry cookie = new Pastry("Cookie", 2.0);
         bundle.add(cupcake);
         bundle.add(cookie);
         assertEquals(2.70, bundle.getPrice());
@@ -29,7 +28,7 @@ public class BundleTest  {
     public void twoCupcakeOneCookieBundle(){
         Pastry cupcake1 = new Cupcake();
         Pastry cupcake2 = new Cupcake();
-        Pastry cookie = new Cookie();
+        Pastry cookie = new Pastry("Cookie", 2.0);
         bundle.add(cupcake1);
         bundle.add(cupcake2);
         bundle.add(cookie);
@@ -40,7 +39,7 @@ public class BundleTest  {
         Bundle outerBundle = new Bundle();
         Pastry cupcake1 = new Cupcake();
         Pastry cupcake2 = new Cupcake();
-        Pastry cookie = new Cookie();
+        Pastry cookie = new Pastry("Cookie", 2.0);
         bundle.add(cupcake1);
         bundle.add(cupcake2);
         bundle.add(cookie);

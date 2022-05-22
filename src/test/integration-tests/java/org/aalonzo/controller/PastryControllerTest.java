@@ -1,7 +1,6 @@
 package org.aalonzo.controller;
 
 import org.aalonzo.repository.PastryRepository;
-import org.aalonzo.domain.pastry.Cookie;
 import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.junit.jupiter.api.AfterEach;
@@ -41,7 +40,7 @@ public class PastryControllerTest {
 
     @Test
     public void addCookieAndShow() throws Exception {
-        addAndVerifyPastry(new Cookie());
+        addAndVerifyPastry(new Pastry("Cookie", 2.0));
     }
 
     @Test

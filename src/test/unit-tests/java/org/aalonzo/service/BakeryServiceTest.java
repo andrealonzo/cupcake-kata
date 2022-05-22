@@ -1,7 +1,7 @@
 package org.aalonzo.service;
 
 import org.aalonzo.BakeryOrder;
-import org.aalonzo.domain.pastry.Cookie;
+import org.aalonzo.domain.pastry.Pastry;
 import org.aalonzo.repository.BakeryRepository;
 import org.aalonzo.service.BakeryService;
 import org.junit.jupiter.api.Disabled;
@@ -29,7 +29,7 @@ public class BakeryServiceTest {
     @Disabled
     public void addCookieToOrder(){
         BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
-        order.add(new Cookie());
+        order.add(new Pastry("Cookie", 2.0));
         BakeryOrder updatedOrder = service.update(order);
         verify(mockRepo, times(2)).save(any());
     }

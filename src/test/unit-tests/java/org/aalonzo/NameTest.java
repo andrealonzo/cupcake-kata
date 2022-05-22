@@ -1,6 +1,5 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.pastry.Cookie;
 import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.aalonzo.domain.topping.Chocolate;
@@ -20,7 +19,7 @@ public class NameTest {
     }
     @Test
     public void cookieName(){
-        Pastry cookie = new Cookie();
+        Pastry cookie = new Pastry("Cookie", 2.0);
 
         assertEquals("Cookie", cookie.getName());
 
@@ -33,19 +32,19 @@ public class NameTest {
     }
     @Test
     public void cookieWithChocolate(){
-        Pastry chocolateCookie = new Chocolate(new Cookie());
+        Pastry chocolateCookie = new Chocolate(new Pastry("Cookie", 2.0));
         assertEquals("Cookie with chocolate", chocolateCookie.getName());
 
     }
     @Test
     public void cookieWithChocolateAndNuts(){
-        Pastry chocolateCookieNuts = new Nuts(new Chocolate(new Cookie()));
+        Pastry chocolateCookieNuts = new Nuts(new Chocolate(new Pastry("Cookie", 2.0)));
         assertEquals("Cookie with chocolate and nuts", chocolateCookieNuts.getName());
 
     }
     @Test
     public void cookieWithNutsAndChocolate(){
-        Pastry chocolateCookieNuts = new Chocolate(new Nuts(new Cookie()));
+        Pastry chocolateCookieNuts = new Chocolate(new Nuts(new Pastry("Cookie", 2.0)));
         assertEquals("Cookie with nuts and chocolate", chocolateCookieNuts.getName());
     }
     @Test

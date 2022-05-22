@@ -1,6 +1,5 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.pastry.Cookie;
 import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.aalonzo.repository.PastryRepository;
@@ -20,7 +19,7 @@ public class PastryRepositoryTest {
     }
     @Test
     public void addCookie(){
-        Pastry cookie = new Cookie();
+        Pastry cookie = new Pastry("Cookie", 2.0);
         repository.save(cookie);
         assertEquals(1, repository.count());
     }
