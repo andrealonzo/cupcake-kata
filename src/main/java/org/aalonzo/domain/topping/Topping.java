@@ -12,8 +12,6 @@ public class Topping extends Pastry {
     private Long id;
     private String name;
     private double price;
-    private static final double PRICE = .2;
-    public static final String NUTS = "nuts";
     @OneToOne
     private final Pastry whatImTopping;
 
@@ -43,17 +41,17 @@ public class Topping extends Pastry {
             return "";
         }
         if (whatImTopping instanceof Topping) {
-            return whatImTopping.getName() + " and " + NUTS;
+            return whatImTopping.getName() + " and " + name;
         }
-        return whatImTopping.getName() + " with " + NUTS;
+        return whatImTopping.getName() + " with " + name;
     }
 
     @Override
     public double getPrice() {
 
         if (whatImTopping == null) {
-            return PRICE;
+            return price;
         }
-        return whatImTopping.getPrice() + PRICE;
+        return whatImTopping.getPrice() + price;
     }
 }

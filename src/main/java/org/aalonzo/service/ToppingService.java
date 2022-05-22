@@ -1,6 +1,5 @@
 package org.aalonzo.service;
 
-import org.aalonzo.domain.topping.Chocolate;
 import org.aalonzo.domain.topping.Nuts;
 import org.aalonzo.domain.topping.Topping;
 import org.aalonzo.repository.ToppingRepository;
@@ -23,7 +22,7 @@ public class ToppingService {
     public Topping add(String type){
         Topping topping;
         if(type.equalsIgnoreCase("chocolate")){
-            topping = new Chocolate();
+            topping = new Topping("chocolate", .1);
         }else{
             topping = new Nuts();
         }

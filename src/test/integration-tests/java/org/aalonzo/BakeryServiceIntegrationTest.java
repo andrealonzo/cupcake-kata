@@ -1,8 +1,8 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.Pastry;
-import org.aalonzo.domain.topping.Chocolate;
 import org.aalonzo.domain.topping.Nuts;
+import org.aalonzo.domain.topping.Topping;
 import org.aalonzo.repository.BakeryRepository;
 import org.aalonzo.repository.PastryRepository;
 import org.aalonzo.service.BakeryService;
@@ -70,7 +70,7 @@ public class BakeryServiceIntegrationTest {
         Pastry Cookie = pastryRepository.save(new Pastry("Cookie", 2.0));
         Pastry cookieWithNuts = pastryRepository.save(new Nuts(Cookie));
 
-        Pastry cupcakeWithNutsAndChocolate = pastryRepository.save(new Chocolate(cookieWithNuts));
+        Pastry cupcakeWithNutsAndChocolate = pastryRepository.save(new Topping("chocolate", .1,(cookieWithNuts)));
 
         order.add(cupcakeWithNutsAndChocolate);
         BakeryOrder updatedOrder = service.update(order);

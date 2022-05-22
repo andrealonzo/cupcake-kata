@@ -1,8 +1,8 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.Pastry;
-import org.aalonzo.domain.topping.Chocolate;
 import org.aalonzo.domain.topping.Nuts;
+import org.aalonzo.domain.topping.Topping;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,12 +22,12 @@ public class PriceTest {
 
     @Test
     public void cupcakeWithChocolatePrice() {
-        Pastry cupcake = new Chocolate(new Pastry("Cupcake", 1.0));
+        Pastry cupcake = new Topping("chocolate", .1,(new Pastry("Cupcake", 1.0)));
         assertEquals(1.1, cupcake.getPrice());
     }
     @Test
     public void cookieWithChocolatePrice() {
-        Pastry cookie = new Chocolate(new Pastry("Cookie", 2.0));
+        Pastry cookie = new Topping("chocolate", .1,(new Pastry("Cookie", 2.0)));
         assertEquals(2.1, cookie.getPrice());
     }
 
@@ -44,7 +44,7 @@ public class PriceTest {
     }
     @Test
     public void priceWithNullWhatImToppingIsChocolatePrice() {
-        Pastry topping = new Chocolate();
+        Pastry topping = new Topping("chocolate", .1);
         assertEquals(.1, topping.getPrice());
     }
 }
