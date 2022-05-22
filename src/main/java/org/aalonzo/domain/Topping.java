@@ -3,7 +3,7 @@ package org.aalonzo.domain;
 import javax.persistence.*;
 
 @Entity
-public class Topping extends Pastry {
+public class Topping {
 
     private String name;
     private double price;
@@ -30,7 +30,7 @@ public class Topping extends Pastry {
         whatImTopping = null;
     }
 
-    @Override
+
     public String getName() {
         return this.name;
 //        if (whatImTopping == null) {
@@ -42,12 +42,12 @@ public class Topping extends Pastry {
 //        return whatImTopping.getName() + " with " + name;
     }
 
-    @Override
-    public double getPrice() {
 
-        if (whatImTopping == null) {
-            return price;
-        }
-        return whatImTopping.getPrice() + price;
+    public double getPrice() {
+        return price;
+//        if (whatImTopping == null) {
+//            return price;
+//        }
+//        return whatImTopping.getPrice() + price;
     }
 }

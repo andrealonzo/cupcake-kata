@@ -1,6 +1,7 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.Pastry;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +13,7 @@ public class BundleTest  {
     public void oneCupcakeBundle(){
         Pastry pastry = new Pastry("Cupcake", 1.0);
         bundle.add(pastry);
-        assertEquals(.90, bundle.getPrice());
+        assertEquals(.90, bundle.calculatePrice());
     }
     @Test
     public void oneCupcakeOneCookieBundle(){
@@ -20,7 +21,7 @@ public class BundleTest  {
         Pastry cookie = new Pastry("Cookie", 2.0);
         bundle.add(cupcake);
         bundle.add(cookie);
-        assertEquals(2.70, bundle.getPrice());
+        assertEquals(2.70, bundle.calculatePrice());
     }
 
     @Test
@@ -31,7 +32,7 @@ public class BundleTest  {
         bundle.add(cupcake1);
         bundle.add(cupcake2);
         bundle.add(cookie);
-        assertEquals(3.60, bundle.getPrice());
+        assertEquals(3.60, bundle.calculatePrice());
     }
     @Test
     public void bundleWithABundle(){
@@ -43,6 +44,6 @@ public class BundleTest  {
         bundle.add(cupcake2);
         bundle.add(cookie);
         outerBundle.add(bundle);
-        assertEquals(3.24, outerBundle.getPrice());
+        assertEquals(3.24, outerBundle.calculatePrice());
     }
 }

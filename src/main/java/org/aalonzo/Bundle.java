@@ -5,31 +5,33 @@ import org.aalonzo.domain.Pastry;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bundle extends Pastry {
+public class Bundle extends Pastry implements Bundable {
 
     public static final String BUNDLE = "Bundle";
-    List<Pastry> pastries;
+    List<Bundable> bundables;
     public static final double DISCOUNT = .10;
 
     public Bundle() {
-        pastries = new ArrayList<>();
+        bundables = new ArrayList<>();
     }
 
-    public void add(Pastry pastry) {
-        pastries.add(pastry);
+    public void add(Bundable pastry) {
+        bundables.add(pastry);
     }
 
 
-    public double getPrice() {
-        return pastries.stream().map(p -> p.getPrice() - p.getPrice() * DISCOUNT)
-                .reduce(0.0,
-                        Double::sum);
-    }
+//    public double getPrice() {
+//        return bundables.stream().map(p -> p.calculatePrice() - p.calculatePrice() * DISCOUNT)
+//                .reduce(0.0,
+//                        Double::sum);
+//    }
 
     @Override
-    public String getName() {
-        return null;
+    public double calculatePrice() {
+        double price=  0;
+        for (Bundable bundable: bundables){
+            price += bundable.calculatePrice() - bundable.calculatePrice() * DISCOUNT;
+        }
+        return price;
     }
-
-
 }

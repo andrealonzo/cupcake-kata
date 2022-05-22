@@ -1,11 +1,13 @@
 package org.aalonzo.domain;
 
+import org.aalonzo.Bundable;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Pastry {
+public class Pastry implements Bundable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,9 +32,10 @@ public class Pastry {
         toppings.add(topping);
     }
 
-    public double getPrice(){
+    public  double getPrice(){
         return this.price;
     }
+
 
     private  String getName(){
         return name;
@@ -42,7 +45,12 @@ public class Pastry {
         return id;
     }
 
-
+    public double calculatePrice(){
+        return this.price + toppings.stream()
+                .map(Topping::getPrice)
+                .reduce(0.0,Double::sum)
+                .doubleValue();
+    }
 
     public String generateName() {
         String fullName = name;
