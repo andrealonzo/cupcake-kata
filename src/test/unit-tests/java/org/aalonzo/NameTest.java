@@ -1,6 +1,5 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.aalonzo.domain.topping.Chocolate;
 import org.aalonzo.domain.topping.Nuts;
@@ -12,7 +11,7 @@ public class NameTest {
 
     @Test
     public void cupcakeName(){
-        Pastry cupcake = new Cupcake();
+        Pastry cupcake = new Pastry("Cupcake", 1.0);
 
         assertEquals("Cupcake", cupcake.getName());
 
@@ -27,7 +26,7 @@ public class NameTest {
 
     @Test
     public void cupcakeWithChocolate(){
-        Pastry chocolateCupcake = new Chocolate(new Cupcake());
+        Pastry chocolateCupcake = new Chocolate(new Pastry("Cupcake", 1.0));
         assertEquals("Cupcake with chocolate", chocolateCupcake.getName());
     }
     @Test
@@ -49,7 +48,7 @@ public class NameTest {
     }
     @Test
     public void cupcakeWithChocolateAndNutsAndChocolate(){
-        Pastry cupcake = new Chocolate(new Nuts(new Chocolate(new Cupcake())));
+        Pastry cupcake = new Chocolate(new Nuts(new Chocolate(new Pastry("Cupcake", 1.0))));
         assertEquals("Cupcake with chocolate and nuts and chocolate", cupcake.getName());
     }
 

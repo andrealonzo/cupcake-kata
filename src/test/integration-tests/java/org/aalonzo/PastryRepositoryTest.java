@@ -1,6 +1,5 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.aalonzo.repository.PastryRepository;
 import org.junit.jupiter.api.Test;
@@ -25,7 +24,7 @@ public class PastryRepositoryTest {
     }
     @Test
     public void addCupCake(){
-        Pastry cupcake = new Cupcake();
+        Pastry cupcake = new Pastry("Cupcake", 1.0);
         repository.save(cupcake);
         assertEquals(1, repository.count());
     }

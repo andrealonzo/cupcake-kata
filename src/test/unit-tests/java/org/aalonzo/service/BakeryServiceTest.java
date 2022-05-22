@@ -3,12 +3,9 @@ package org.aalonzo.service;
 import org.aalonzo.BakeryOrder;
 import org.aalonzo.domain.pastry.Pastry;
 import org.aalonzo.repository.BakeryRepository;
-import org.aalonzo.service.BakeryService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class BakeryServiceTest {

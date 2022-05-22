@@ -1,8 +1,7 @@
 package org.aalonzo.controller;
 
-import org.aalonzo.repository.PastryRepository;
-import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.repository.PastryRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,12 +44,12 @@ public class PastryControllerTest {
 
     @Test
     public void addCupcakeAndShow() throws Exception {
-        addAndVerifyPastry(new Cupcake());
+        addAndVerifyPastry(new Pastry("Cupcake", 1.0));
     }
 
     @Test
     public void deleteAllPastries() throws Exception {
-        Pastry pastry = new Cupcake();
+        Pastry pastry = new Pastry("Cupcake", 1.0);
 
         //add pastry
         repository.save(pastry);
@@ -65,7 +64,7 @@ public class PastryControllerTest {
 
     @Test
     public void deleteOnePastry() throws Exception {
-        Pastry pastry = new Cupcake();
+        Pastry pastry = new Pastry("Cupcake", 1.0);
 
         repository.save(pastry);
         assertEquals(1, repository.count());

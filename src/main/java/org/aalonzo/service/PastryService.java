@@ -1,5 +1,5 @@
 package org.aalonzo.service;
-import org.aalonzo.domain.pastry.Cupcake;
+
 import org.aalonzo.domain.pastry.Pastry;
 import org.aalonzo.repository.PastryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class PastryService {
         if(type.equalsIgnoreCase("cookie")){
             pastry = new Pastry("Cookie", 2.0);
         }else{
-            pastry = new Cupcake();
+            pastry = new Pastry("Cupcake", 1.0);
         }
         repository.save(pastry);
         return pastry;

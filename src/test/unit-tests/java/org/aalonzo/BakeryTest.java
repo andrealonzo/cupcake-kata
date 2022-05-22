@@ -1,7 +1,6 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.Bakery;
-import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,7 @@ public class BakeryTest {
 
     Bakery bakery = new Bakery();
     Pastry cookie = new Pastry("Cookie", 2.0);
-    Pastry cupcake = new Cupcake();
+    Pastry cupcake = new Pastry("Cupcake", 1.0);
     @Test
     public void newBakeryHasNoPastries(){
         assertTrue(bakery.getAllPastries().isEmpty());

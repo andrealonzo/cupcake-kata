@@ -1,6 +1,5 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.aalonzo.domain.topping.Chocolate;
 import org.aalonzo.domain.topping.Nuts;
@@ -45,7 +44,7 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void addCupcakeToOrder(){
         BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
-        Cupcake cupcake = pastryRepository.save(new Cupcake());
+        Pastry cupcake = pastryRepository.save(new Pastry("Cupcake", 1.0));
         order.add(cupcake);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
@@ -55,7 +54,7 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void addCupcakeWithNutsToOrder(){
         BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
-        Cupcake cupcake = pastryRepository.save(new Cupcake());
+        Pastry cupcake = pastryRepository.save(new Pastry("Cupcake", 1.0));
         Pastry cupcakeWithNuts = pastryRepository.save(new Nuts(cupcake));
 
         order.add(cupcakeWithNuts);

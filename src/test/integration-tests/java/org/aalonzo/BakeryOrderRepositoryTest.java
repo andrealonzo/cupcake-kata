@@ -1,6 +1,5 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.pastry.Cupcake;
 import org.aalonzo.domain.pastry.Pastry;
 import org.aalonzo.repository.BakeryRepository;
 import org.aalonzo.repository.PastryRepository;
@@ -8,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
 public class BakeryOrderRepositoryTest {
@@ -32,7 +31,7 @@ public class BakeryOrderRepositoryTest {
     @Test
     public void addOneOrderWithCupcakeCanRetrieveOrderAndCupcake(){
         BakeryOrder order = new BakeryOrder("order1");
-        Pastry cupcake = new Cupcake();
+        Pastry cupcake = new Pastry("Cupcake", 1.0);
         pastryRepository.save(cupcake);
         order.add(cupcake);
         bakeryRepository.save(order);

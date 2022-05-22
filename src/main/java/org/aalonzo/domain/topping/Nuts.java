@@ -2,7 +2,10 @@ package org.aalonzo.domain.topping;
 
 import org.aalonzo.domain.pastry.Pastry;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
