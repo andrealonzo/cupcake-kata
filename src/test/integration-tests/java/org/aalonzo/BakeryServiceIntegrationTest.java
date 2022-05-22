@@ -1,6 +1,6 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.topping.Chocolate;
 import org.aalonzo.domain.topping.Nuts;
 import org.aalonzo.repository.BakeryRepository;

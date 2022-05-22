@@ -1,4 +1,4 @@
-package org.aalonzo.domain.pastry;
+package org.aalonzo.domain;
 
 import javax.persistence.*;
 

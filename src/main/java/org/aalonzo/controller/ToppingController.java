@@ -1,6 +1,6 @@
 package org.aalonzo.controller;
 
-import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.topping.Topping;
 import org.aalonzo.service.ToppingService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.Bakery;
-import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.domain.Pastry;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

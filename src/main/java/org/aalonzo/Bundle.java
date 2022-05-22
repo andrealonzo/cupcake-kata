@@ -1,6 +1,6 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.domain.Pastry;
 
 import java.util.ArrayList;
 import java.util.List;

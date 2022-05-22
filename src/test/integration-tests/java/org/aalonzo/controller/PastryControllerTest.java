@@ -1,6 +1,6 @@
 package org.aalonzo.controller;
 
-import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.repository.PastryRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

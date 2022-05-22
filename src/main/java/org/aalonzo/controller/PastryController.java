@@ -1,6 +1,6 @@
 package org.aalonzo.controller;
 
-import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.service.PastryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

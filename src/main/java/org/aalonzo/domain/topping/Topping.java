@@ -1,6 +1,6 @@
 package org.aalonzo.domain.topping;
 
-import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.domain.Pastry;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

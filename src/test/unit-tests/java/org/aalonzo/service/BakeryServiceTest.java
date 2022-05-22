@@ -1,7 +1,7 @@
 package org.aalonzo.service;
 
 import org.aalonzo.BakeryOrder;
-import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.repository.BakeryRepository;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

@@ -2,7 +2,7 @@ package org.aalonzo.endtoend;
 
 import org.aalonzo.controller.PastryController;
 import org.aalonzo.controller.ToppingController;
-import org.aalonzo.domain.pastry.Pastry;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.repository.BakeryRepository;
 import org.aalonzo.repository.PastryRepository;
 import org.aalonzo.repository.ToppingRepository;
