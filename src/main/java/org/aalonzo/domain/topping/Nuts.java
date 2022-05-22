@@ -23,7 +23,6 @@ public class Nuts extends Topping {
         whatImTopping = null;
     }
 
-    @Override
     public String getName() {
         if(whatImTopping== null){
             return"";
@@ -34,7 +33,6 @@ public class Nuts extends Topping {
         return whatImTopping.getName() + " with " + NUTS;
     }
 
-    @Override
     public double getPrice() {
 
         if(whatImTopping== null){
