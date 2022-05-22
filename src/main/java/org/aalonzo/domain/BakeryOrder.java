@@ -1,4 +1,4 @@
-package org.aalonzo;
+package org.aalonzo.domain;
 
 import org.aalonzo.domain.Pastry;
 

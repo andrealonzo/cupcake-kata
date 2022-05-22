@@ -1,5 +1,6 @@
 package org.aalonzo;
 
+import org.aalonzo.domain.BakeryOrder;
 import org.aalonzo.domain.Pastry;
 import org.junit.jupiter.api.Test;
 

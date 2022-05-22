@@ -1,6 +1,6 @@
 package org.aalonzo.repository;
 
-import org.aalonzo.BakeryOrder;
+import org.aalonzo.domain.BakeryOrder;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

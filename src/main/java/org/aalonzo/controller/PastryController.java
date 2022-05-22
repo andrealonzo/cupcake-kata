@@ -28,8 +28,6 @@ public class PastryController {
         service.deleteById(id);
     }
 
-
-
     @GetMapping("/hi")
     public String hi(@RequestParam(value="name", defaultValue="World")String name){
         return String.format("Hello %s!",name);
