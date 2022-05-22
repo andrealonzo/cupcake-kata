@@ -1,7 +1,6 @@
 package org.aalonzo.service;
 
-import org.aalonzo.domain.topping.Nuts;
-import org.aalonzo.domain.topping.Topping;
+import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.ToppingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class ToppingService {
 
 
-    private ToppingRepository repository;
+    private final ToppingRepository repository;
     @Autowired
     public ToppingService(ToppingRepository repository) {
         this.repository = repository;
@@ -24,7 +23,7 @@ public class ToppingService {
         if(type.equalsIgnoreCase("chocolate")){
             topping = new Topping("chocolate", .1);
         }else{
-            topping = new Nuts();
+            topping = new Topping("nuts", .2);
         }
         repository.save(topping);
         return topping;

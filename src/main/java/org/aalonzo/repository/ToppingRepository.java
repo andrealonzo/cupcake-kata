@@ -1,6 +1,6 @@
 package org.aalonzo.repository;
 
-import org.aalonzo.domain.topping.Topping;
+import org.aalonzo.domain.Topping;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,7 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.Pastry;
-import org.aalonzo.domain.topping.Nuts;
-import org.aalonzo.domain.topping.Topping;
+import org.aalonzo.domain.Topping;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,18 +36,18 @@ public class NameTest {
     }
     @Test
     public void cookieWithChocolateAndNuts(){
-        Pastry chocolateCookieNuts = new Nuts(new Topping("chocolate", .1,(new Pastry("Cookie", 2.0))));
+        Pastry chocolateCookieNuts = new Topping("nuts", .2,new Topping("chocolate", .1,(new Pastry("Cookie", 2.0))));
         assertEquals("Cookie with chocolate and nuts", chocolateCookieNuts.getName());
 
     }
     @Test
     public void cookieWithNutsAndChocolate(){
-        Pastry chocolateCookieNuts = new Topping("chocolate", .1,(new Nuts(new Pastry("Cookie", 2.0))));
+        Pastry chocolateCookieNuts = new Topping("chocolate", .1,(new Topping("nuts", .2,new Pastry("Cookie", 2.0))));
         assertEquals("Cookie with nuts and chocolate", chocolateCookieNuts.getName());
     }
     @Test
     public void cupcakeWithChocolateAndNutsAndChocolate(){
-        Pastry cupcake = new Topping("chocolate", .1,(new Nuts(new Topping("chocolate", .1,(new Pastry("Cupcake", 1.0))))));
+        Pastry cupcake = new Topping("chocolate", .1,(new Topping("nuts", .2,new Topping("chocolate", .1,(new Pastry("Cupcake", 1.0))))));
         assertEquals("Cupcake with chocolate and nuts and chocolate", cupcake.getName());
     }
 

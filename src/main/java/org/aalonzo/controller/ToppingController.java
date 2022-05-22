@@ -1,7 +1,7 @@
 package org.aalonzo.controller;
 
 import org.aalonzo.domain.Pastry;
-import org.aalonzo.domain.topping.Topping;
+import org.aalonzo.domain.Topping;
 import org.aalonzo.service.ToppingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/v1")
 public class ToppingController {
-    private ToppingService service;
+    private final ToppingService service;
 
     @Autowired
     public ToppingController(ToppingService service) {
