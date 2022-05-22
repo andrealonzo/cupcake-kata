@@ -38,4 +38,15 @@ public class PriceTest {
         Pastry cookie = new Nuts(new Cookie());
         assertEquals(2.2, cookie.getPrice());
     }
+
+    @Test
+    public void priceWithNullWhatImToppingIsNutsPrice() {
+        Pastry topping = new Nuts();
+        assertEquals(.2, topping.getPrice());
+    }
+    @Test
+    public void priceWithNullWhatImToppingIsChocolatePrice() {
+        Pastry topping = new Chocolate();
+        assertEquals(.1, topping.getPrice());
+    }
 }

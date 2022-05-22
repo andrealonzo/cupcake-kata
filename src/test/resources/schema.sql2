@@ -1,0 +1,8 @@
+-- create sequence hibernate_sequence start with 1 increment by 1
+create table bakery_order2 (id bigint not null, name varchar(255), primary key (id))
+-- create table bakery_order_pastries (bakery_order_id bigint not null, pastries_id bigint not null)
+create table pastry (dtype varchar(31) not null, id bigint not null, what_im_topping_id bigint, primary key (id))
+-- alter table bakery_order_pastries add constraint UK_qop0x78ayqqgfxso6b0dipbcq unique (pastries_id)
+-- alter table bakery_order_pastries add constraint FKgxkh0xmr278k6wsq8w3mwk1wr foreign key (pastries_id) references pastry
+-- alter table bakery_order_pastries add constraint FK6py2rpd844tnv89mhyhr6mhiy foreign key (bakery_order_id) references bakery_order
+-- alter table pastry add constraint FKsvgv7iq72ipebe06qhuqq1bja foreign key (what_im_topping_id) references pastry

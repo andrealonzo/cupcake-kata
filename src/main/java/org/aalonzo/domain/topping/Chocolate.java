@@ -37,6 +37,11 @@ public class Chocolate extends Topping {
 
     @Override
     public double getPrice() {
+
+
+        if(whatImTopping== null){
+            return PRICE;
+        }
         return whatImTopping.getPrice() + PRICE;
     }
 }

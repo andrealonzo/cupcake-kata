@@ -1,4 +1,4 @@
-package org.aalonzo.controller;
+package org.aalonzo.endtoend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

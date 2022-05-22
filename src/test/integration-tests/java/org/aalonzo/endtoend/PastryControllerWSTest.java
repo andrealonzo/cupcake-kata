@@ -1,5 +1,6 @@
-package org.aalonzo.controller;
+package org.aalonzo.endtoend;
 
+import org.aalonzo.controller.PastryController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +16,5 @@ public class PastryControllerWSTest {
     public void contextLoads() {
         assertThat(controller).isNotNull();
     }
-
 
 }
