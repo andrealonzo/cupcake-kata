@@ -10,8 +10,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ToppingService {
 
-    @Autowired
+
     private ToppingRepository repository;
+    @Autowired
+    public ToppingService(ToppingRepository repository) {
+        this.repository = repository;
+    }
+
     public Iterable<Topping> findAll() {
         return repository.findAll();
     }

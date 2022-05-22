@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-public class BakeryServiceTest {
+public class BakeryServiceIntegrationTest {
 
     public static final String GENERIC_ORDER_NAME = "order1";
-    //TODO find out how to mock so we don't have to load full context
+    //TODO convert this to an E2E test
     @Autowired
     BakeryRepository bakeryRepository;
     @Autowired

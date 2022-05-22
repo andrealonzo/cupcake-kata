@@ -8,8 +8,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class BakeryService {
 
+    private BakeryRepository repository;
     @Autowired
-    BakeryRepository repository;
+    public BakeryService(BakeryRepository repository) {
+        this.repository = repository;
+    }
+
     public BakeryOrder startNew(String name) {
         return repository.save(new BakeryOrder(name));
     }

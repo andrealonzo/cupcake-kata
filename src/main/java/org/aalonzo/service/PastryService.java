@@ -10,8 +10,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class PastryService {
 
-    @Autowired
     private PastryRepository repository;
+
+    @Autowired
+    public PastryService(PastryRepository repository) {
+        this.repository = repository;
+    }
+
     public Iterable<Pastry> findAll() {
         return repository.findAll();
     }

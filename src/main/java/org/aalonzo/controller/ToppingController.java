@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/v1")
 public class ToppingController {
-    @Autowired
     private ToppingService service;
+
+    @Autowired
+    public ToppingController(ToppingService service) {
+        this.service = service;
+    }
+
     @GetMapping("/topping")
     public @ResponseBody Iterable<Topping> findAll(){
         return service.findAll();
