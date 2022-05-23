@@ -10,28 +10,19 @@ public class BakeryOrderTest {
 
 
     @Test
-    public void buyingNothingCostsNothing(){
+    public void buyingNothingCostsNothing() {
         BakeryOrder order = new BakeryOrder();
         double price = order.calculateTotalPrice();
         assertEquals(0, price, .01);
     }
 
     @Test
-    public void addPastryOrderGetPrice(){
+    public void addPastryOrderGetPrice() {
         BakeryOrder order = new BakeryOrder();
-        Pastry pastry = new FakePastry();
+        Pastry pastry = new Pastry("Cookie", 1);
         order.add(pastry);
         double price = order.calculateTotalPrice();
         assertEquals(1, price, .01);
     }
-
-    private static class FakePastry extends Pastry {
-        @Override
-        public double getPrice() {
-            return 1;
-        }
-
-
-
-    }
 }
+

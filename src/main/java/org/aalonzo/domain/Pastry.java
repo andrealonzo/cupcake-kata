@@ -15,7 +15,7 @@ public class Pastry implements Bundable {
     private String name;
     private double price;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Topping> toppings;
 
     public Pastry(String name, double price) {
@@ -48,12 +48,11 @@ public class Pastry implements Bundable {
     public double calculatePrice(){
         return this.price + toppings.stream()
                 .map(Topping::getPrice)
-                .reduce(0.0,Double::sum)
-                .doubleValue();
+                .reduce(0.0,Double::sum);
     }
 
     public String generateName() {
-        String fullName = name;
+        StringBuilder fullName = new StringBuilder(name);
         String connector;
         for (int i = 0; i < toppings.size(); i++) {
             if(i ==0){
@@ -61,8 +60,8 @@ public class Pastry implements Bundable {
             }else{
                 connector = "and";
             }
-            fullName += " " + connector + " " +toppings.get(i).getName();
+            fullName.append(" ").append(connector).append(" ").append(toppings.get(i).getName());
         }
-        return fullName;
+        return fullName.toString();
     }
 }

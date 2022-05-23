@@ -5,6 +5,7 @@ import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.BakeryRepository;
 import org.aalonzo.repository.PastryRepository;
+import org.aalonzo.repository.ToppingRepository;
 import org.aalonzo.service.BakeryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class BakeryServiceIntegrationTest {
     BakeryRepository bakeryRepository;
     @Autowired
     PastryRepository pastryRepository;
+    @Autowired
+    ToppingRepository toppingRepository;
     @Autowired
     BakeryService service;
     @Test
@@ -55,7 +58,8 @@ public class BakeryServiceIntegrationTest {
     public void addCupcakeWithNutsToOrder(){
         BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
         Pastry cupcake = pastryRepository.save(new Pastry("Cupcake", 1.0));
-        cupcake.addTopping(new Topping("nuts", .2));
+        Topping nuts = toppingRepository.save(new Topping("nuts", .2));
+        cupcake.addTopping(nuts);
         Pastry cupcakeWithNuts = pastryRepository.save(cupcake);
 
         order.add(cupcakeWithNuts);
@@ -69,11 +73,12 @@ public class BakeryServiceIntegrationTest {
     public void addCookieWithNutsAndChocolateToOrder(){
         BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
         Pastry cookie = pastryRepository.save(new Pastry("Cookie", 2.0));
-        cookie.addTopping(new Topping("nuts", .2));
-        Pastry cookieWithNuts = pastryRepository.save(cookie);
+        Topping nuts = toppingRepository.save(new Topping("nuts", .2));
+        Topping chocolate = toppingRepository.save(new Topping("chocolate", .1));
+        cookie.addTopping(nuts);
+        cookie.addTopping(chocolate);
 
-        Pastry cupcakeWithNutsAndChocolate = pastryRepository.save((cookieWithNuts));
-        cookieWithNuts.addTopping(new Topping("chocolate", .1));
+        Pastry cupcakeWithNutsAndChocolate = pastryRepository.save(cookie);
         order.add(cupcakeWithNutsAndChocolate);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
