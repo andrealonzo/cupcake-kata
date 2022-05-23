@@ -8,6 +8,7 @@ public class Topping {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     private String name;
     private double price;
 
@@ -23,6 +24,9 @@ public class Topping {
     }
 
 
+    public Long getId() {
+        return id;
+    }
     public String getName() {
         return this.name;
     }

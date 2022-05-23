@@ -21,8 +21,8 @@ public class ToppingController {
         return service.findAll();
     }
     @PostMapping(path="/topping")
-    public @ResponseBody Topping add(@RequestParam String type){
-        return service.add(type);
+    public @ResponseBody Topping add(@RequestParam String name, @RequestParam double price){
+        return service.add(name,price);
     }
     @DeleteMapping(path="/topping/delete/all")
     public @ResponseBody void deleteAll(){

@@ -8,15 +8,16 @@ import static org.mockito.Mockito.*;
 public class ToppingControllerTest {
     ToppingService mockService = mock(ToppingService.class);
     ToppingController controller = new ToppingController(mockService);
+
     @Test
-    public void findAllCallsServiceFindAll(){
+    public void findAllCallsServiceFindAll() {
         controller.findAll();
         verify(mockService, times(1)).findAll();
     }
+
     @Test
-    public void addCallsServiceAdd(){
-        String type = "type";
-        controller.add(type);
-        verify(mockService, times(1)).add(type);
+    public void addCallsServiceAdd() {
+        controller.add("chocolate", .10);
+        verify(mockService, times(1)).add("chocolate", .10);
     }
 }

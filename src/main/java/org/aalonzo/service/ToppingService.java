@@ -18,15 +18,8 @@ public class ToppingService {
     public Iterable<Topping> findAll() {
         return repository.findAll();
     }
-    public Topping add(String type){
-        Topping topping;
-        if(type.equalsIgnoreCase("chocolate")){
-            topping = new Topping("chocolate", .1);
-        }else{
-            topping = new Topping("nuts", .2);
-        }
-        repository.save(topping);
-        return topping;
+    public Topping add(String type, double price){
+        return repository.save(new Topping(type, price));
     }
     public void deleteAll(){
         repository.deleteAll();
