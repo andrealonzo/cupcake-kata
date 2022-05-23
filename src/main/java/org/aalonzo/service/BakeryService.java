@@ -29,7 +29,6 @@ public class BakeryService {
         return bakeryOrderRepository.save(order);
     }
     public Iterable<BakeryOrder> findAll() {
-        bakeryOrderRepository.count();
         return bakeryOrderRepository.findAll();
     }
     public long count() {

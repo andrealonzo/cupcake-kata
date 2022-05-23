@@ -46,7 +46,7 @@ public class BakeryController {
 
     }
 
-    @GetMapping("/bakery/order")
+    @GetMapping(path="/bakery/order/id")
     public Optional<BakeryOrder> findById(@RequestParam long id) {
         return service.findById(id);
     }
