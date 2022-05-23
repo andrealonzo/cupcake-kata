@@ -18,15 +18,8 @@ public class PastryService {
     public Iterable<Pastry> findAll() {
         return repository.findAll();
     }
-    public Pastry add(String type){
-        Pastry pastry;
-        if(type.equalsIgnoreCase("cookie")){
-            pastry = new Pastry("Cookie", 2.0);
-        }else{
-            pastry = new Pastry("Cupcake", 1.0);
-        }
-        repository.save(pastry);
-        return pastry;
+    public Pastry add(String name, double price){
+        return repository.save(new Pastry(name, price));
     }
     public void deleteAll(){
         repository.deleteAll();

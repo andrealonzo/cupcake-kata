@@ -37,7 +37,7 @@ public class Pastry implements Bundable {
     }
 
 
-    private  String getName(){
+    public String getName(){
         return name;
     }
 

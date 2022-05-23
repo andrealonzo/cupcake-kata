@@ -15,8 +15,8 @@ public class PastryController {
         return service.findAll();
     }
     @PostMapping(path="/pastry")
-    public @ResponseBody Pastry add(@RequestParam String type){
-        return service.add(type);
+    public @ResponseBody Pastry add(@RequestParam String name, @RequestParam double price){
+        return service.add(name, price);
     }
     @DeleteMapping(path="/pastry/delete/all")
     public @ResponseBody void deleteAll(){
