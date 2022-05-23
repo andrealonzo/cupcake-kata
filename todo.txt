@@ -6,9 +6,9 @@ Customer can the see of the list of toppings that can be added.  It will display
 Chocolate  $.10
 Nuts  $.20
 
-User can start an order
+User can start an order DONE
 
-User can choose a baked good and add it to the order
+User can choose a baked good and add it to the order  DONE
 
 User can see baked goods in the order
 
@@ -17,6 +17,10 @@ User can see list of orders and see which baked goods are in the order
 User can add a topping to a baked good in an order
 
 User can see list of orders and see which baked goods are in the order
+
+User can see price total price of order
+
+User can see generated name of order (PastryWithToppings)
 
 
 

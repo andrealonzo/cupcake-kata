@@ -15,6 +15,8 @@ public class Pastry implements Bundable {
     private String name;
     private double price;
 
+
+
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Topping> toppings;
 
@@ -44,12 +46,16 @@ public class Pastry implements Bundable {
     public Long getId() {
         return id;
     }
+    public List<Topping> getToppings() {
+        return toppings;
+    }
 
     public double calculatePrice(){
         return this.price + toppings.stream()
                 .map(Topping::getPrice)
                 .reduce(0.0,Double::sum);
     }
+
 
     public String generateName() {
         StringBuilder fullName = new StringBuilder(name);
