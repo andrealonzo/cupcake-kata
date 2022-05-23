@@ -19,7 +19,7 @@ public class BakeryServiceTest {
     public static final String NUTS = "Nuts";
     public static final String CHOCOLATE = "Chocolate";
     public static final String CUPCAKE = "Cupcake";
-    BakeryService service = new BakeryService(new FakeBakeryRepository());
+    BakeryService service = new BakeryService(new FakeBakeryOrderRepository(), new FakePastryRepository());
 
     Pastry pastry1;
     Pastry pastry2;
@@ -132,6 +132,7 @@ public class BakeryServiceTest {
         BakeryOrder actualBakeryOrder = iterator.next();
         assertEquals(2.3, actualBakeryOrder.getTotalPrice());
     }
+
 
 
 }

@@ -3,7 +3,7 @@ package org.aalonzo;
 import org.aalonzo.domain.BakeryOrder;
 import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.Topping;
-import org.aalonzo.repository.BakeryRepository;
+import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.repository.PastryRepository;
 import org.aalonzo.repository.ToppingRepository;
 import org.aalonzo.service.BakeryService;
@@ -20,7 +20,7 @@ public class BakeryServiceIntegrationTest {
     public static final String GENERIC_ORDER_NAME = "order1";
     //TODO convert this to an E2E test
     @Autowired
-    BakeryRepository bakeryRepository;
+    BakeryOrderRepository bakeryOrderRepository;
     @Autowired
     PastryRepository pastryRepository;
     @Autowired
@@ -30,8 +30,8 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void createNewOrder(){
         BakeryOrder order = service.add(GENERIC_ORDER_NAME);
-        assertTrue(bakeryRepository.findById(order.getId()).isPresent());
-        assertEquals(GENERIC_ORDER_NAME, bakeryRepository.findById(order.getId()).get().getName());
+        assertTrue(bakeryOrderRepository.findById(order.getId()).isPresent());
+        assertEquals(GENERIC_ORDER_NAME, bakeryOrderRepository.findById(order.getId()).get().getName());
     }
 
     @Test

@@ -1,7 +1,9 @@
 package org.aalonzo.service;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.repository.BakeryRepository;
+import org.aalonzo.domain.Pastry;
+import org.aalonzo.repository.BakeryOrderRepository;
+import org.aalonzo.repository.PastryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -11,35 +13,47 @@ import java.util.Optional;
 @Service
 public class BakeryService {
 
-    public final BakeryRepository repository;
+    public final BakeryOrderRepository bakeryOrderRepository;
+    public final PastryRepository pastryRepository;
     @Autowired
-    public BakeryService(@Qualifier("bakeryRepository") BakeryRepository repository) {
-        this.repository = repository;
+    public BakeryService(@Qualifier("bakeryOrderRepository") BakeryOrderRepository bakeryOrderRepository, PastryRepository pastryRepository) {
+        this.bakeryOrderRepository = bakeryOrderRepository;
+        this.pastryRepository = pastryRepository;
     }
 
     public BakeryOrder add(String name) {
-        return repository.save(new BakeryOrder(name));
+        return bakeryOrderRepository.save(new BakeryOrder(name));
     }
 
     public BakeryOrder update(BakeryOrder order) {
-        return repository.save(order);
+        return bakeryOrderRepository.save(order);
     }
     public Iterable<BakeryOrder> findAll() {
-        repository.count();
-        return repository.findAll();
+        bakeryOrderRepository.count();
+        return bakeryOrderRepository.findAll();
     }
     public long count() {
-        return repository.count();
+        return bakeryOrderRepository.count();
     }
     public Optional<BakeryOrder> findById(Long aLong) {
-        return repository.findById(aLong);
+
+        return bakeryOrderRepository.findById(aLong);
     }
 
     public void deleteAll() {
-        repository.deleteAll();
+        bakeryOrderRepository.deleteAll();
     }
 
     public void deleteById(long id) {
-        repository.deleteById(id);
+        bakeryOrderRepository.deleteById(id);
+    }
+
+    public void addPastryToOrder(long pastryId, long orderId) {
+        Optional<Pastry> pastry = pastryRepository.findById(pastryId);
+        if(pastry.isPresent()){
+            BakeryOrder order = bakeryOrderRepository.findById(orderId).get();
+            order.add(pastry.get());
+            update(order);
+        }
     }
 }

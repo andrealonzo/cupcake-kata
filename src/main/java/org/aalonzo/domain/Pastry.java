@@ -30,6 +30,11 @@ public class Pastry implements Bundable {
         this.name = "";
         this.price = 0;
     }
+
+    public Pastry(Long id) {
+        this.id = id;
+    }
+
     public void addTopping(Topping topping){
         toppings.add(topping);
     }
@@ -46,6 +51,11 @@ public class Pastry implements Bundable {
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public List<Topping> getToppings() {
         return toppings;
     }

@@ -2,17 +2,17 @@ package org.aalonzo.service;
 
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.repository.BakeryRepository;
+import org.aalonzo.repository.BakeryOrderRepository;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class FakeBakeryRepository implements BakeryRepository {
+public class FakeBakeryOrderRepository implements BakeryOrderRepository {
     private final Map<Long, BakeryOrder> bakeryOrders;
     long id;
 
-    public FakeBakeryRepository() {
+    public FakeBakeryOrderRepository() {
         bakeryOrders = new HashMap<>();
         id = 1;
     }

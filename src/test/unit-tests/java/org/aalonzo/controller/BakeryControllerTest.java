@@ -1,24 +1,23 @@
 package org.aalonzo.controller;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.repository.BakeryRepository;
+import org.aalonzo.domain.Pastry;
+import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.service.BakeryService;
-import org.aalonzo.service.FakeBakeryRepository;
+import org.aalonzo.service.FakeBakeryOrderRepository;
+import org.aalonzo.service.FakePastryRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 
-@AutoConfigureMockMvc
 public class BakeryControllerTest {
 
     public static final String ORDER_1 = "order1";
-    private BakeryRepository repository = new FakeBakeryRepository();
+    private final BakeryOrderRepository repository = new FakeBakeryOrderRepository();
 
-    private BakeryController controller = new BakeryController(new BakeryService(repository));
+    private final BakeryController controller = new BakeryController(new BakeryService(repository, new FakePastryRepository()));
 
     @BeforeEach
     public void setUp(){
@@ -37,6 +36,16 @@ public class BakeryControllerTest {
         assertEquals(ORDER_1, bakeryOrder.getName());
     }
     @Test
+    public void findByOrder() {
+        BakeryOrder order = controller.add(ORDER_1);
+        assertEquals(ORDER_1, controller.findById(order.getId()).get().getName());
+    }
+
+    @Test
+    public void findNonExistentOrder() {
+        assertTrue(controller.findById(1).isEmpty());
+    }
+    @Test
     public void deleteOrder() {
         BakeryOrder order = controller.add(ORDER_1);
         assertEquals(1, controller.count());
@@ -53,6 +62,25 @@ public class BakeryControllerTest {
         assertEquals(2, controller.count());
         controller.deleteAll();
         assertEquals(0, controller.count());
+    }
+
+    @Test
+    public void addPastryToOrder(){
+        Pastry pastry = new Pastry("Cupcake", 1.00);
+        pastry.setId(1L);
+        BakeryOrder order = controller.add(ORDER_1);
+        controller.addPastryToOrder(1L, order.getId());
+        assertEquals(1,controller.findById(order.getId()).get().getPastries().size());
+        assertEquals(pastry.getName(),controller.findById(order.getId()).get().getPastries().get(0).getName());
+    }
+    @Test
+    public void addNonExistentPastryToOrder(){
+        long nonExistantPastryId = 10000L;
+        Pastry pastry = new Pastry("Cupcake", 1.00);
+        pastry.setId(nonExistantPastryId);
+        BakeryOrder order = controller.add(ORDER_1);
+        controller.addPastryToOrder(nonExistantPastryId, order.getId());
+        assertEquals(0,controller.findById(order.getId()).get().getPastries().size());
     }
 
 }

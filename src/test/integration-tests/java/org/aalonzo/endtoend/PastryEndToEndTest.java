@@ -1,23 +1,13 @@
 package org.aalonzo.endtoend;
 
 import org.aalonzo.controller.PastryController;
-import org.aalonzo.controller.ToppingController;
 import org.aalonzo.domain.Pastry;
-import org.aalonzo.repository.BakeryRepository;
-import org.aalonzo.repository.PastryRepository;
-import org.aalonzo.repository.ToppingRepository;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.test.context.jdbc.Sql;
-
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -2,7 +2,7 @@ package org.aalonzo;
 
 import org.aalonzo.domain.BakeryOrder;
 import org.aalonzo.domain.Pastry;
-import org.aalonzo.repository.BakeryRepository;
+import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.repository.PastryRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +16,16 @@ public class BakeryOrderRepositoryTest {
     @Autowired
     private PastryRepository pastryRepository;
     @Autowired
-    private BakeryRepository bakeryRepository;
+    private BakeryOrderRepository bakeryOrderRepository;
     @Test
     public void newRepositoryHasZeroItems(){
-        assertEquals(0, bakeryRepository.count());
+        assertEquals(0, bakeryOrderRepository.count());
     }
     @Test
     public void addOneOrderShowsOneInRepo(){
         BakeryOrder order = new BakeryOrder("order1");
-        bakeryRepository.save(order);
-        assertEquals(1, bakeryRepository.count());
+        bakeryOrderRepository.save(order);
+        assertEquals(1, bakeryOrderRepository.count());
     }
 
 
@@ -35,11 +35,11 @@ public class BakeryOrderRepositoryTest {
         Pastry cupcake = new Pastry("Cupcake", 1.0);
         pastryRepository.save(cupcake);
         order.add(cupcake);
-        bakeryRepository.save(order);
+        bakeryOrderRepository.save(order);
 
-        assertTrue(bakeryRepository.findById(order.getId()).isPresent());
-        BakeryOrder actualOrder = bakeryRepository.findById(order.getId()).get();
-        assertEquals(1, bakeryRepository.count());
+        assertTrue(bakeryOrderRepository.findById(order.getId()).isPresent());
+        BakeryOrder actualOrder = bakeryOrderRepository.findById(order.getId()).get();
+        assertEquals(1, bakeryOrderRepository.count());
         assertEquals(order, actualOrder);
         assertEquals(cupcake, actualOrder.getPastries().get(0));
     }
