@@ -9,20 +9,24 @@ import java.util.Map;
 import java.util.Optional;
 
 public class FakeBakeryRepository implements BakeryRepository {
-    private final Map<String, BakeryOrder> bakeryOrders;
-
+    private final Map<Long, BakeryOrder> bakeryOrders;
+    long id;
 
     public FakeBakeryRepository() {
         bakeryOrders = new HashMap<>();
+        id = 1;
     }
 
-    public Map<String, BakeryOrder> getBakeryOrders() {
+    public Map<Long, BakeryOrder> getBakeryOrders() {
         return bakeryOrders;
     }
 
     @Override
     public <S extends BakeryOrder> S save(S entity) {
-        bakeryOrders.put(entity.getName(), entity);
+        if(entity.getId()==null){
+            entity.setId(id++);
+        }
+        bakeryOrders.put(entity.getId(), entity);
         return entity;
     }
 
@@ -33,7 +37,7 @@ public class FakeBakeryRepository implements BakeryRepository {
 
     @Override
     public Optional<BakeryOrder> findById(Long aLong) {
-        return Optional.empty();
+        return Optional.ofNullable(bakeryOrders.get(aLong));
     }
 
     @Override

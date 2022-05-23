@@ -6,12 +6,15 @@ import org.aalonzo.domain.Pastry;
 import org.aalonzo.repository.BakeryRepository;
 import org.aalonzo.repository.PastryRepository;
 import org.aalonzo.repository.ToppingRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
@@ -22,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class BakeryEndToEndTest {
+public class PastryEndToEndTest {
 
     @LocalServerPort
     private int port;
@@ -30,16 +33,11 @@ public class BakeryEndToEndTest {
     private TestRestTemplate restTemplate;
     @Autowired
     private PastryController controller;
-    @Autowired
-    private ToppingController toppingController;
-    @Autowired
-    private BakeryRepository bakeryRepository;
-    @Autowired
-    private PastryRepository pastryRepository;
-    @Autowired
-    private ToppingRepository toppingRepository;
 
-
+//    @AfterEach
+//    public void clearRepository() {
+//        repository.deleteAll();
+//    }
     @Test
     public void contextLoads() {
         assertNotNull(controller);
@@ -48,24 +46,33 @@ public class BakeryEndToEndTest {
     @Disabled
     public void endpointExists() {
         String url = "http://localhost:" + port + "/v1/pastry";
-        System.out.println("url: " + url);
 
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port,
-                String.class)).contains("Hello");
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port+ "/v1/hi",
-                String.class)).contains("Hello");
         assertThat(this.restTemplate.getForObject("http://localhost:" + port+ "/v1/pastry",
                 String.class)).contains("[]");
     }
-    @Sql({"/data.sql2"})
+
     @Test
     @Disabled
-    public void customerCanSeeAllPastriesThatCanBePurchased(){
-        List<Pastry> response = this.restTemplate.getForObject("http://localhost:" + port + "/v1/pastry",
-                List.class);
-        assertEquals(2,response.size());
-        assertEquals("Cookie",response.get(0).generateName());
-        assertEquals("Cupcake",response.get(0).generateName());
+    public void addPastryAndShow(){
+       Pastry pastry = new Pastry("Cookie", .1);
+//        HttpHeaders headers = new HttpHeaders();
+//      //  headers.setContentType(MediaType.APPLICATION_JSON);
+//        personJsonObject = new JSONObject();
+//        personJsonObject.put("id", 1);
+//        personJsonObject.put("name", "John");
+//        HttpEntity<String> request =
+//                new HttpEntity<String>(personJsonObject.toString(), headers);
+
+//        String personResultAsJsonStr =
+//                restTemplate.postForObject(createPersonUrl, request, String.class);
+//        JsonNode root = objectMapper.readTree(personResultAsJsonStr);
+    //    HttpEntity<String> request =  this.restTemplate.postForObject("http://localhost:" + port + "/v1/pastry",pastry,String.class);
+
+        Pastry[] response = this.restTemplate.getForObject("http://localhost:" + port + "/v1/pastry",
+                Pastry[].class);
+        assertEquals(2,response.length);
+//        assertEquals("Cookie",response.get(0).generateName());
+//        assertEquals("Cupcake",response.get(0).generateName());
     }
 
 

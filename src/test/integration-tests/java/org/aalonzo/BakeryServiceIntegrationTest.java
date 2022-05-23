@@ -29,14 +29,14 @@ public class BakeryServiceIntegrationTest {
     BakeryService service;
     @Test
     public void createNewOrder(){
-        BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
+        BakeryOrder order = service.add(GENERIC_ORDER_NAME);
         assertTrue(bakeryRepository.findById(order.getId()).isPresent());
         assertEquals(GENERIC_ORDER_NAME, bakeryRepository.findById(order.getId()).get().getName());
     }
 
     @Test
     public void addCookieToOrder(){
-        BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
+        BakeryOrder order = service.add(GENERIC_ORDER_NAME);
         Pastry cookie = pastryRepository.save(new Pastry("Cookie", 2.0));
         order.add(cookie);
         BakeryOrder updatedOrder = service.update(order);
@@ -46,7 +46,7 @@ public class BakeryServiceIntegrationTest {
 
     @Test
     public void addCupcakeToOrder(){
-        BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
+        BakeryOrder order = service.add(GENERIC_ORDER_NAME);
         Pastry cupcake = pastryRepository.save(new Pastry("Cupcake", 1.0));
         order.add(cupcake);
         BakeryOrder updatedOrder = service.update(order);
@@ -56,7 +56,7 @@ public class BakeryServiceIntegrationTest {
 
     @Test
     public void addCupcakeWithNutsToOrder(){
-        BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
+        BakeryOrder order = service.add(GENERIC_ORDER_NAME);
         Pastry cupcake = pastryRepository.save(new Pastry("Cupcake", 1.0));
         Topping nuts = toppingRepository.save(new Topping("nuts", .2));
         cupcake.addTopping(nuts);
@@ -71,7 +71,7 @@ public class BakeryServiceIntegrationTest {
 
     @Test
     public void addCookieWithNutsAndChocolateToOrder(){
-        BakeryOrder order = service.startNew(GENERIC_ORDER_NAME);
+        BakeryOrder order = service.add(GENERIC_ORDER_NAME);
         Pastry cookie = pastryRepository.save(new Pastry("Cookie", 2.0));
         Topping nuts = toppingRepository.save(new Topping("nuts", .2));
         Topping chocolate = toppingRepository.save(new Topping("chocolate", .1));

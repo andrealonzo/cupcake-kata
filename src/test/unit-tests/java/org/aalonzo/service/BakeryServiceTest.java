@@ -19,9 +19,7 @@ public class BakeryServiceTest {
     public static final String NUTS = "Nuts";
     public static final String CHOCOLATE = "Chocolate";
     public static final String CUPCAKE = "Cupcake";
-
-    FakeBakeryRepository fakeRepo = new FakeBakeryRepository();
-    BakeryService service = new BakeryService(fakeRepo);
+    BakeryService service = new BakeryService(new FakeBakeryRepository());
 
     Pastry pastry1;
     Pastry pastry2;
@@ -42,53 +40,52 @@ public class BakeryServiceTest {
 
     @Test
     public void createNewOrder() {
-        service.startNew(ORDER_1);
-        assertEquals(1, fakeRepo.count());
-        assertEquals(ORDER_1, fakeRepo.getBakeryOrders().get(ORDER_1).getName());
+        BakeryOrder order = service.add(ORDER_1);
+        assertEquals(1, service.count());
+        assertEquals(ORDER_1, service.findById(order.getId()).get().getName());
     }
 
     @Test
     public void addCookieToOrder() {
-        BakeryOrder order = service.startNew(ORDER_1);
+        BakeryOrder order = service.add(ORDER_1);
         order.add(pastry1);
         service.update(order);
-        assertEquals(1, fakeRepo.getBakeryOrders().get(ORDER_1).getPastries().size());
-        assertEquals(COOKIE, fakeRepo.getBakeryOrders().get(ORDER_1).getPastries().get(0).generateName());
+        assertEquals(1, service.findById(order.getId()).get().getPastries().size());
+        assertEquals(COOKIE, service.findById(order.getId()).get().getPastries().get(0).generateName());
     }
 
     @Test
     public void addMultipleOrders() {
-        BakeryOrder order1 = service.startNew(ORDER_1);
-        BakeryOrder order2 = service.startNew(ORDER_2);
+        BakeryOrder order1 = service.add(ORDER_1);
+        BakeryOrder order2 = service.add(ORDER_2);
         order1.add(pastry1);
         order2.add(pastry2);
         service.update(order1);
         service.update(order2);
-        assertEquals(2, fakeRepo.getBakeryOrders().size());
-        assertEquals(ORDER_1, fakeRepo.getBakeryOrders().get(ORDER_1).getName());
-        assertEquals(ORDER_2, fakeRepo.getBakeryOrders().get(ORDER_2).getName());
-        assertEquals(COOKIE, fakeRepo.getBakeryOrders().get(ORDER_1).getPastries().get(0).generateName());
-        assertEquals(CUPCAKE, fakeRepo.getBakeryOrders().get(ORDER_2).getPastries().get(0).generateName());
+        assertEquals(2, service.count());
+        assertEquals(ORDER_1, service.findById(order1.getId()).get().getName());
+        assertEquals(ORDER_2, service.findById(order2.getId()).get().getName());
+        assertEquals(COOKIE, service.findById(order1.getId()).get().getPastries().get(0).generateName());
+        assertEquals(CUPCAKE, service.findById(order2.getId()).get().getPastries().get(0).generateName());
     }
 
     @Test
     public void addToppingToPastryInOrder() {
-        BakeryOrder order1 = service.startNew(ORDER_1);
+        BakeryOrder order1 = service.add(ORDER_1);
         pastry1.addTopping(topping1);
         order1.add(pastry1);
 
         service.update(order1);
-        assertEquals(ORDER_1, fakeRepo.getBakeryOrders().get(ORDER_1).getName());
-        assertEquals(COOKIE, fakeRepo.getBakeryOrders().get(ORDER_1).getPastries().get(0).getName());
-        assertEquals(CHOCOLATE, fakeRepo.getBakeryOrders().get(ORDER_1).getPastries().get(0).getToppings().get(0).getName());
+        assertEquals(ORDER_1, service.findById(order1.getId()).get().getName());
+        assertEquals(COOKIE, service.findById(order1.getId()).get().getPastries().get(0).getName());
+        assertEquals(CHOCOLATE, service.findById(order1.getId()).get().getPastries().get(0).getToppings().get(0).getName());
     }
 
     @Test
     public void viewMultipleOrders() {
 
-        fakeRepo.save(bakeryOrder1);
-        fakeRepo.save(bakeryOrder2);
-        Iterable<BakeryOrder> iterable = service.findAll();
+        service.add(bakeryOrder1.getName());
+        service.add(bakeryOrder2.getName());
 
         Collection<BakeryOrder> bakeryOrders = (Collection<BakeryOrder>) service.findAll();
         assertTrue(bakeryOrders.contains(bakeryOrder1));
@@ -100,7 +97,7 @@ public class BakeryServiceTest {
         bakeryOrder1.add(pastry1);
         bakeryOrder1.add(pastry2);
 
-        fakeRepo.save(bakeryOrder1);
+        service.add(bakeryOrder1.getName());
 
         Iterator<BakeryOrder> iterator = service.findAll().iterator();
         assertTrue(iterator.hasNext());
@@ -114,12 +111,26 @@ public class BakeryServiceTest {
         pastry1.addTopping(topping1);
         pastry1.addTopping(topping2);
         bakeryOrder1.add(pastry1);
-        fakeRepo.save(bakeryOrder1);
+        service.add(bakeryOrder1.getName());
 
         Iterator<BakeryOrder> iterator = service.findAll().iterator();
         assertTrue(iterator.hasNext());
         BakeryOrder actualBakeryOrder = iterator.next();
-        assertEquals(pastry1, actualBakeryOrder.getPastries().get(0));
+        assertEquals(topping1, actualBakeryOrder.getPastries().get(0).getToppings().get(0));
+        assertEquals(topping2, actualBakeryOrder.getPastries().get(0).getToppings().get(1));
+    }
+
+    @Test
+    public void getTotalPriceOfOrder() {
+        pastry1.addTopping(topping1);
+        pastry1.addTopping(topping2);
+        bakeryOrder1.add(pastry1);
+        service.add(bakeryOrder1.getName());
+
+        Iterator<BakeryOrder> iterator = service.findAll().iterator();
+        assertTrue(iterator.hasNext());
+        BakeryOrder actualBakeryOrder = iterator.next();
+        assertEquals(2.3, actualBakeryOrder.getTotalPrice());
     }
 
 

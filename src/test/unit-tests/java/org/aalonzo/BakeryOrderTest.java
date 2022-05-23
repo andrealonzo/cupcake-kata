@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BakeryOrderTest {
 
-
     @Test
     public void buyingNothingCostsNothing() {
         BakeryOrder order = new BakeryOrder();

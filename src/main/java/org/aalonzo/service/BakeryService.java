@@ -1,11 +1,12 @@
 package org.aalonzo.service;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.domain.Pastry;
 import org.aalonzo.repository.BakeryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class BakeryService {
@@ -16,7 +17,7 @@ public class BakeryService {
         this.repository = repository;
     }
 
-    public BakeryOrder startNew(String name) {
+    public BakeryOrder add(String name) {
         return repository.save(new BakeryOrder(name));
     }
 
@@ -24,6 +25,13 @@ public class BakeryService {
         return repository.save(order);
     }
     public Iterable<BakeryOrder> findAll() {
+        repository.count();
         return repository.findAll();
+    }
+    public long count() {
+        return repository.count();
+    }
+    public Optional<BakeryOrder> findById(Long aLong) {
+        return repository.findById(aLong);
     }
 }

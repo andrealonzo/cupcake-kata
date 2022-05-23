@@ -13,6 +13,10 @@ public class BakeryOrder {
     private Long id;
     private String name;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @OneToMany
     private final List<Pastry> pastries;
 
@@ -48,4 +52,7 @@ public class BakeryOrder {
         return name;
     }
 
+    public double getTotalPrice() {
+        return calculateTotalPrice();
+    }
 }
