@@ -86,8 +86,8 @@ public class BakeryServiceTest {
     @Test
     public void viewMultipleOrders() {
 
-        fakeRepo.getBakeryOrders().put(bakeryOrder1.getName(), bakeryOrder1);
-        fakeRepo.getBakeryOrders().put(bakeryOrder2.getName(), bakeryOrder2);
+        fakeRepo.save(bakeryOrder1);
+        fakeRepo.save(bakeryOrder2);
         Iterable<BakeryOrder> iterable = service.findAll();
 
         Collection<BakeryOrder> bakeryOrders = (Collection<BakeryOrder>) service.findAll();
@@ -100,7 +100,7 @@ public class BakeryServiceTest {
         bakeryOrder1.add(pastry1);
         bakeryOrder1.add(pastry2);
 
-        fakeRepo.getBakeryOrders().put(bakeryOrder1.getName(), bakeryOrder1);
+        fakeRepo.save(bakeryOrder1);
 
         Iterator<BakeryOrder> iterator = service.findAll().iterator();
         assertTrue(iterator.hasNext());
@@ -114,7 +114,7 @@ public class BakeryServiceTest {
         pastry1.addTopping(topping1);
         pastry1.addTopping(topping2);
         bakeryOrder1.add(pastry1);
-        fakeRepo.getBakeryOrders().put(bakeryOrder1.getName(), bakeryOrder1);
+        fakeRepo.save(bakeryOrder1);
 
         Iterator<BakeryOrder> iterator = service.findAll().iterator();
         assertTrue(iterator.hasNext());
