@@ -89,11 +89,8 @@ public class BakeryServiceTest {
         fakeRepo.getBakeryOrders().put(bakeryOrder1.getName(), bakeryOrder1);
         fakeRepo.getBakeryOrders().put(bakeryOrder2.getName(), bakeryOrder2);
         Iterable<BakeryOrder> iterable = service.findAll();
-        if (!(iterable instanceof Collection)) {
-            fail();
-        }
 
-        Collection<BakeryOrder> bakeryOrders = (Collection<BakeryOrder>) iterable;
+        Collection<BakeryOrder> bakeryOrders = (Collection<BakeryOrder>) service.findAll();
         assertTrue(bakeryOrders.contains(bakeryOrder1));
         assertTrue(bakeryOrders.contains(bakeryOrder2));
     }
@@ -105,8 +102,7 @@ public class BakeryServiceTest {
 
         fakeRepo.getBakeryOrders().put(bakeryOrder1.getName(), bakeryOrder1);
 
-        Iterable<BakeryOrder> iterable = service.findAll();
-        Iterator<BakeryOrder> iterator = iterable.iterator();
+        Iterator<BakeryOrder> iterator = service.findAll().iterator();
         assertTrue(iterator.hasNext());
         BakeryOrder actualBakeryOrder = iterator.next();
         assertEquals(pastry1, actualBakeryOrder.getPastries().get(0));
@@ -115,12 +111,12 @@ public class BakeryServiceTest {
 
     @Test
     public void viewPastriesAndToppingsInAnOrder() {
+        pastry1.addTopping(topping1);
+        pastry1.addTopping(topping2);
         bakeryOrder1.add(pastry1);
-
         fakeRepo.getBakeryOrders().put(bakeryOrder1.getName(), bakeryOrder1);
 
-        Iterable<BakeryOrder> iterable = service.findAll();
-        Iterator<BakeryOrder> iterator = iterable.iterator();
+        Iterator<BakeryOrder> iterator = service.findAll().iterator();
         assertTrue(iterator.hasNext());
         BakeryOrder actualBakeryOrder = iterator.next();
         assertEquals(pastry1, actualBakeryOrder.getPastries().get(0));
