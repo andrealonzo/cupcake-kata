@@ -40,5 +40,6 @@ public class BakeryService {
     }
 
     public void deleteById(long id) {
+        repository.deleteById(id);
     }
 }

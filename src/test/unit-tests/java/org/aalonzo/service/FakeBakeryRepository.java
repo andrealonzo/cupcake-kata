@@ -62,7 +62,7 @@ public class FakeBakeryRepository implements BakeryRepository {
 
     @Override
     public void deleteById(Long aLong) {
-
+        bakeryOrders.remove(aLong);
     }
 
     @Override
