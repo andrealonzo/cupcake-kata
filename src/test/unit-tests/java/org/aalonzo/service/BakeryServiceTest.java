@@ -4,8 +4,8 @@ import org.aalonzo.domain.BakeryOrder;
 import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.BakeryRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.*;
 
@@ -17,11 +17,20 @@ public class BakeryServiceTest {
     public static final String ORDER_1 = "order1";
     public static final String ORDER_2 = "order2";
     public static final String COOKIE = "Cookie";
+    public static final String NUTS = "Nuts";
     public static final String CHOCOLATE = "Chocolate";
     public static final String CUPCAKE = "Cupcake";
 
     FakeBakeryRepository fakeRepo   = new FakeBakeryRepository();
     BakeryService service = new BakeryService(fakeRepo);
+
+    Pastry pastry1;
+    Pastry pastry2;
+    @BeforeEach
+    public void setUp(){
+        pastry1 = new Pastry(COOKIE, 2.0);
+        pastry2 = new Pastry(CUPCAKE, 1.0);
+    }
 
     @Test
     public void createNewOrder() {
@@ -33,7 +42,7 @@ public class BakeryServiceTest {
     @Test
     public void addCookieToOrder(){
         BakeryOrder order = service.startNew(ORDER_1);
-        order.add(new Pastry(COOKIE, 2.0));
+        order.add(pastry1);
         service.update(order);
         assertEquals(1,fakeRepo.bakeryOrders.get(ORDER_1).getPastries().size());
         assertEquals(COOKIE,fakeRepo.bakeryOrders.get(ORDER_1).getPastries().get(0).generateName());
@@ -43,8 +52,8 @@ public class BakeryServiceTest {
     public void addMultipleOrders(){
         BakeryOrder order1= service.startNew(ORDER_1);
         BakeryOrder order2 = service.startNew(ORDER_2);
-        order1.add(new Pastry(COOKIE, 2.0));
-        order2.add(new Pastry(CUPCAKE, 1.0));
+        order1.add(pastry1);
+        order2.add(pastry2);
         service.update(order1);
         service.update(order2);
         assertEquals(2,fakeRepo.bakeryOrders.size());
@@ -56,9 +65,8 @@ public class BakeryServiceTest {
     @Test
     public void addToppingToPastryInOrder(){
         BakeryOrder order1= service.startNew(ORDER_1);
-        Pastry pastry = new Pastry(COOKIE, 2.0);
-        pastry.addTopping(new Topping(CHOCOLATE, .1));
-        order1.add(pastry);
+        pastry1.addTopping(new Topping(CHOCOLATE, .1));
+        order1.add(pastry1);
 
         service.update(order1);
         assertEquals(ORDER_1,fakeRepo.bakeryOrders.get(ORDER_1).getName());
@@ -78,10 +86,39 @@ public class BakeryServiceTest {
             fail();
         }
 
-        Collection<BakeryOrder> bakeryOrders = (Collection)iterable;
+        Collection<BakeryOrder> bakeryOrders = (Collection<BakeryOrder>)iterable;
         assertTrue(bakeryOrders.contains(bakeryOrder));
         assertTrue(bakeryOrders.contains(bakeryOrder2));
+    }
+    @Test
+    public void viewPastriesInAnOrder(){
+        BakeryOrder bakeryOrder = new BakeryOrder(ORDER_1);
+        bakeryOrder.add(pastry1);
+        bakeryOrder.add(pastry2);
 
+        fakeRepo.bakeryOrders.put(bakeryOrder.getName(), bakeryOrder);
+
+        Iterable<BakeryOrder> iterable = service.findAll();
+        Iterator<BakeryOrder> iterator = iterable.iterator();
+        assertTrue(iterator.hasNext());
+        BakeryOrder actualBakeryOrder = iterator.next();
+        assertEquals(pastry1, actualBakeryOrder.getPastries().get(0));
+        assertEquals(pastry2, actualBakeryOrder.getPastries().get(1));
+    }
+    @Test
+    public void viewPastriesAndToppingsInAnOrder(){
+        BakeryOrder bakeryOrder = new BakeryOrder(ORDER_1);
+        Topping topping1 = new Topping(CHOCOLATE, .01);
+        Topping topping2 = new Topping(NUTS, .02);
+        bakeryOrder.add(pastry1);
+
+        fakeRepo.bakeryOrders.put(bakeryOrder.getName(), bakeryOrder);
+
+        Iterable<BakeryOrder> iterable = service.findAll();
+        Iterator<BakeryOrder> iterator = iterable.iterator();
+        assertTrue(iterator.hasNext());
+        BakeryOrder actualBakeryOrder = iterator.next();
+        assertEquals(pastry1, actualBakeryOrder.getPastries().get(0));
     }
 
 

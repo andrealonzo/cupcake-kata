@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BakeryService {
 
-    private final BakeryRepository repository;
+    public final BakeryRepository repository;
     @Autowired
     public BakeryService(@Qualifier("bakeryRepository") BakeryRepository repository) {
         this.repository = repository;
