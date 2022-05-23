@@ -82,6 +82,6 @@ public class FakeBakeryRepository implements BakeryRepository {
 
     @Override
     public void deleteAll() {
-
+        bakeryOrders.clear();
     }
 }

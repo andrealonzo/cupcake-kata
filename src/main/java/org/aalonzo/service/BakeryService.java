@@ -34,4 +34,11 @@ public class BakeryService {
     public Optional<BakeryOrder> findById(Long aLong) {
         return repository.findById(aLong);
     }
+
+    public void deleteAll() {
+        repository.deleteAll();
+    }
+
+    public void deleteById(long id) {
+    }
 }
