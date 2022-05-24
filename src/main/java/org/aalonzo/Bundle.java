@@ -1,11 +1,11 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.Pastry;
+import org.aalonzo.domain.PastryWithToppings;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bundle extends Pastry implements Bundable {
+public class Bundle extends PastryWithToppings implements Bundable {
 
     public static final String BUNDLE = "Bundle";
     List<Bundable> bundables;

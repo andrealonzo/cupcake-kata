@@ -1,6 +1,6 @@
 package org.aalonzo;
 
-import org.aalonzo.domain.Pastry;
+import org.aalonzo.domain.PastryWithToppings;
 import org.aalonzo.repository.PastryRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +18,13 @@ public class PastryRepositoryTest {
     }
     @Test
     public void addCookie(){
-        Pastry cookie = new Pastry("Cookie", 2.0);
+        PastryWithToppings cookie = new PastryWithToppings("Cookie", 2.0);
         repository.save(cookie);
         assertEquals(1, repository.count());
     }
     @Test
     public void addCupCake(){
-        Pastry cupcake = new Pastry("Cupcake", 1.0);
+        PastryWithToppings cupcake = new PastryWithToppings("Cupcake", 1.0);
         repository.save(cupcake);
         assertEquals(1, repository.count());
     }

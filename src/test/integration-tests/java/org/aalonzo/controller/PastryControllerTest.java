@@ -1,6 +1,6 @@
 package org.aalonzo.controller;
 
-import org.aalonzo.domain.Pastry;
+import org.aalonzo.domain.PastryWithToppings;
 import org.aalonzo.repository.PastryRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -39,17 +39,17 @@ public class PastryControllerTest {
 
     @Test
     public void addCookieAndShow() throws Exception {
-        addAndVerifyPastry(new Pastry("Cookie", 2.0));
+        addAndVerifyPastry(new PastryWithToppings("Cookie", 2.0));
     }
 
     @Test
     public void addCupcakeAndShow() throws Exception {
-        addAndVerifyPastry(new Pastry("Cupcake", 1.0));
+        addAndVerifyPastry(new PastryWithToppings("Cupcake", 1.0));
     }
 
     @Test
     public void deleteAllPastries() throws Exception {
-        Pastry pastry = new Pastry("Cupcake", 1.0);
+        PastryWithToppings pastry = new PastryWithToppings("Cupcake", 1.0);
 
         //add pastry
         repository.save(pastry);
@@ -64,7 +64,7 @@ public class PastryControllerTest {
 
     @Test
     public void deleteOnePastry() throws Exception {
-        Pastry pastry = new Pastry("Cupcake", 1.0);
+        PastryWithToppings pastry = new PastryWithToppings("Cupcake", 1.0);
 
         repository.save(pastry);
         assertEquals(1, repository.count());
@@ -74,7 +74,7 @@ public class PastryControllerTest {
         assertEquals(0, repository.count());
     }
 
-    private void addAndVerifyPastry(Pastry pastry) throws Exception {
+    private void addAndVerifyPastry(PastryWithToppings pastry) throws Exception {
         assertEquals(0, repository.count());
         this.mockMvc.perform(post("/v1/pastry")
                 .param("name", pastry.getName())

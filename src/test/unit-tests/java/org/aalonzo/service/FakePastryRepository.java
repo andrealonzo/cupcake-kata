@@ -1,32 +1,32 @@
 package org.aalonzo.service;
 
-import org.aalonzo.domain.Pastry;
+import org.aalonzo.domain.PastryWithToppings;
 import org.aalonzo.repository.PastryRepository;
 
 import java.util.*;
 
 public class FakePastryRepository implements PastryRepository {
 
-    Map<Long, Pastry> pastries;
+    Map<Long, PastryWithToppings> pastries;
     public FakePastryRepository() {
-        Pastry pastry = new Pastry("Cupcake", 1.00);
+        PastryWithToppings pastry = new PastryWithToppings("Cupcake", 1.00);
         pastry.setId(1L);
         pastries = new HashMap<>();
         pastries.put(pastry.getId(), pastry);
     }
 
     @Override
-    public <S extends Pastry> S save(S entity) {
+    public <S extends PastryWithToppings> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends Pastry> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends PastryWithToppings> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<Pastry> findById(Long aLong) {
+    public Optional<PastryWithToppings> findById(Long aLong) {
 
         return Optional.ofNullable(pastries.get(aLong));
     }
@@ -37,12 +37,12 @@ public class FakePastryRepository implements PastryRepository {
     }
 
     @Override
-    public Iterable<Pastry> findAll() {
+    public Iterable<PastryWithToppings> findAll() {
         return pastries.values();
     }
 
     @Override
-    public Iterable<Pastry> findAllById(Iterable<Long> longs) {
+    public Iterable<PastryWithToppings> findAllById(Iterable<Long> longs) {
         return pastries.values();
     }
 
@@ -57,7 +57,7 @@ public class FakePastryRepository implements PastryRepository {
     }
 
     @Override
-    public void delete(Pastry entity) {
+    public void delete(PastryWithToppings entity) {
 
     }
 
@@ -67,7 +67,7 @@ public class FakePastryRepository implements PastryRepository {
     }
 
     @Override
-    public void deleteAll(Iterable<? extends Pastry> entities) {
+    public void deleteAll(Iterable<? extends PastryWithToppings> entities) {
 
     }
 

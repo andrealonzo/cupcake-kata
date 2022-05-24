@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Pastry implements Bundable {
+public class PastryWithToppings implements Bundable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,18 +20,18 @@ public class Pastry implements Bundable {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Topping> toppings;
 
-    public Pastry(String name, double price) {
+    public PastryWithToppings(String name, double price) {
         this.name = name;
         this.price = price;
         toppings= new ArrayList<>();
     }
 
-    public Pastry() {
+    public PastryWithToppings() {
         this.name = "";
         this.price = 0;
     }
 
-    public Pastry(Long id) {
+    public PastryWithToppings(Long id) {
         this.id = id;
     }
 

@@ -1,7 +1,7 @@
 package org.aalonzo.endtoend;
 
 import org.aalonzo.controller.PastryController;
-import org.aalonzo.domain.Pastry;
+import org.aalonzo.domain.PastryWithToppings;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class PastryEndToEndTest {
     @Test
     @Disabled
     public void addPastryAndShow(){
-       Pastry pastry = new Pastry("Cookie", .1);
+       PastryWithToppings pastry = new PastryWithToppings("Cookie", .1);
 //        HttpHeaders headers = new HttpHeaders();
 //      //  headers.setContentType(MediaType.APPLICATION_JSON);
 //        personJsonObject = new JSONObject();
@@ -58,8 +58,8 @@ public class PastryEndToEndTest {
 //        JsonNode root = objectMapper.readTree(personResultAsJsonStr);
     //    HttpEntity<String> request =  this.restTemplate.postForObject("http://localhost:" + port + "/v1/pastry",pastry,String.class);
 
-        Pastry[] response = this.restTemplate.getForObject("http://localhost:" + port + "/v1/pastry",
-                Pastry[].class);
+        PastryWithToppings[] response = this.restTemplate.getForObject("http://localhost:" + port + "/v1/pastry",
+                PastryWithToppings[].class);
         assertEquals(2,response.length);
 //        assertEquals("Cookie",response.get(0).generateName());
 //        assertEquals("Cupcake",response.get(0).generateName());

@@ -1,7 +1,7 @@
 package org.aalonzo.service;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.domain.Pastry;
+import org.aalonzo.domain.PastryWithToppings;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.repository.PastryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,7 @@ public class BakeryService {
     }
 
     public void addPastryToOrder(long pastryId, long orderId) {
-        Optional<Pastry> pastry = pastryRepository.findById(pastryId);
+        Optional<PastryWithToppings> pastry = pastryRepository.findById(pastryId);
         if(pastry.isPresent()){
             BakeryOrder order = bakeryOrderRepository.findById(orderId).get();
             order.add(pastry.get());

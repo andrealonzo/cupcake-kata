@@ -8,7 +8,7 @@ Nuts  $.20
 
 User can start an order DONE
 
-User can choose a baked good and add it to the order
+User can choose a baked good and add it to the order  DONE
 
 User can see baked goods in the order  DONE
 

@@ -1,7 +1,5 @@
 package org.aalonzo.domain;
 
-import org.aalonzo.domain.Pastry;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,7 @@ public class BakeryOrder {
     }
 
     @OneToMany
-    private final List<Pastry> pastries;
+    private final List<PastryWithToppings> pastries;
 
     public BakeryOrder(String name) {
         pastries = new ArrayList<>();
@@ -31,16 +29,16 @@ public class BakeryOrder {
 
     public double calculateTotalPrice() {
         return pastries.stream()
-                .map(Pastry::calculatePrice)
+                .map(PastryWithToppings::calculatePrice)
                 .reduce(Double::sum)
                 .orElse(0.0);
     }
 
-    public void add(Pastry pastry) {
+    public void add(PastryWithToppings pastry) {
         pastries.add(pastry);
 
     }
-    public List<Pastry> getPastries(){
+    public List<PastryWithToppings> getPastries(){
         return this.pastries;
     }
 

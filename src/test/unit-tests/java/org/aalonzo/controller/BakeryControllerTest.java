@@ -1,7 +1,7 @@
 package org.aalonzo.controller;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.domain.Pastry;
+import org.aalonzo.domain.PastryWithToppings;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.service.BakeryService;
 import org.aalonzo.service.FakeBakeryOrderRepository;
@@ -66,7 +66,7 @@ public class BakeryControllerTest {
 
     @Test
     public void addPastryToOrder(){
-        Pastry pastry = new Pastry("Cupcake", 1.00);
+        PastryWithToppings pastry = new PastryWithToppings("Cupcake", 1.00);
         pastry.setId(1L);
         BakeryOrder order = controller.add(ORDER_1);
         controller.addPastryToOrder(1L, order.getId());
@@ -76,11 +76,21 @@ public class BakeryControllerTest {
     @Test
     public void addNonExistentPastryToOrder(){
         long nonExistantPastryId = 10000L;
-        Pastry pastry = new Pastry("Cupcake", 1.00);
+        PastryWithToppings pastry = new PastryWithToppings("Cupcake", 1.00);
         pastry.setId(nonExistantPastryId);
         BakeryOrder order = controller.add(ORDER_1);
         controller.addPastryToOrder(nonExistantPastryId, order.getId());
         assertEquals(0,controller.findById(order.getId()).get().getPastries().size());
     }
+
+//    @Test
+//    public void addToppingToPastryToOrder(){
+//        long nonExistantPastryId = 10000L;
+//        Pastry pastry = new Pastry("Cupcake", 1.00);
+//        pastry.setId(nonExistantPastryId);
+//        BakeryOrder order = controller.add(ORDER_1);
+//        controller.addPastryToOrder(nonExistantPastryId, order.getId());
+//        assertEquals(0,controller.findById(order.getId()).get().getPastries().size());
+//    }
 
 }
