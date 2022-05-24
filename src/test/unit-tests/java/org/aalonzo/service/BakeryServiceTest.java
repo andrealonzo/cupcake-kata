@@ -21,7 +21,7 @@ public class BakeryServiceTest {
     public static final String CHOCOLATE = "Chocolate";
     public static final String CUPCAKE = "Cupcake";
     FakePastryRepository fakePastryRepository = new FakePastryRepository();
-    BakeryService service = new BakeryService(new FakeBakeryOrderRepository(), fakePastryRepository);
+    BakeryService service = new BakeryService(new FakeBakeryOrderRepository(), fakePastryRepository, new FakeToppingRepository());
     PastryWithToppings pastry1;
     PastryWithToppings pastry2;
     Topping topping1;

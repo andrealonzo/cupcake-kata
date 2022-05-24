@@ -2,10 +2,12 @@ package org.aalonzo.controller;
 
 import org.aalonzo.domain.BakeryOrder;
 import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.service.BakeryService;
 import org.aalonzo.service.FakeBakeryOrderRepository;
 import org.aalonzo.service.FakePastryRepository;
+import org.aalonzo.service.FakeToppingRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +19,7 @@ public class BakeryControllerTest {
     public static final String ORDER_1 = "order1";
     private final BakeryOrderRepository repository = new FakeBakeryOrderRepository();
 
-    private final BakeryController controller = new BakeryController(new BakeryService(repository, new FakePastryRepository()));
+    private final BakeryController controller = new BakeryController(new BakeryService(repository, new FakePastryRepository(), new FakeToppingRepository() ));
 
     @BeforeEach
     public void setUp(){
@@ -83,14 +85,20 @@ public class BakeryControllerTest {
         assertEquals(0,controller.findById(order.getId()).get().getPastries().size());
     }
 
-//    @Test
-//    public void addToppingToPastryToOrder(){
-//        long nonExistantPastryId = 10000L;
-//        Pastry pastry = new Pastry("Cupcake", 1.00);
-//        pastry.setId(nonExistantPastryId);
-//        BakeryOrder order = controller.add(ORDER_1);
-//        controller.addPastryToOrder(nonExistantPastryId, order.getId());
-//        assertEquals(0,controller.findById(order.getId()).get().getPastries().size());
-//    }
+    @Test
+    public void addToppingToPastryToOrder(){
+
+        PastryWithToppings pastry = new PastryWithToppings("Cupcake", 1.00);
+        pastry.setId(1L);
+        Topping topping = new Topping("Chocolate", .10);
+        topping.setId(2L);
+        BakeryOrder order = controller.add(ORDER_1);
+        controller.addPastryToOrder(pastry.getId(), order.getId());
+        controller.addToppingToPastry(pastry.getId(), topping.getId());
+        assertEquals(1,controller.findById(order.getId()).get().getPastries().size());
+        assertEquals(pastry.getName(),controller.findById(order.getId()).get().getPastries().get(0).getName());
+        assertEquals(topping.getName(),controller.findById(order.getId()).get().getPastries().get(0).getToppings().get(0).getName());
+
+    }
 
 }

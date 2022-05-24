@@ -1,9 +1,12 @@
 package org.aalonzo.service;
 
 import org.aalonzo.domain.BakeryOrder;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.repository.PastryRepository;
+import org.aalonzo.repository.ToppingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -15,10 +18,12 @@ public class BakeryService {
 
     public final BakeryOrderRepository bakeryOrderRepository;
     public final PastryRepository pastryRepository;
+    public final ToppingRepository toppingRepository;
     @Autowired
-    public BakeryService(@Qualifier("bakeryOrderRepository") BakeryOrderRepository bakeryOrderRepository, PastryRepository pastryRepository) {
+    public BakeryService(@Qualifier("bakeryOrderRepository") BakeryOrderRepository bakeryOrderRepository, PastryRepository pastryRepository, ToppingRepository toppingRepository) {
         this.bakeryOrderRepository = bakeryOrderRepository;
         this.pastryRepository = pastryRepository;
+        this.toppingRepository= toppingRepository;
     }
 
     public BakeryOrder add(String name) {
@@ -54,5 +59,16 @@ public class BakeryService {
             order.add(pastry.get());
             update(order);
         }
+    }
+
+    public Optional<PastryWithToppings> addToppingToPastry(Long pastryId, Long toppingId) {
+        Optional<PastryWithToppings> optionalPastry = pastryRepository.findById(pastryId);
+        Optional<Topping> topping = toppingRepository.findById(toppingId);
+        if(topping.isPresent()){
+            PastryWithToppings pastry = optionalPastry.get();
+            pastry.addTopping(topping.get());
+            return Optional.of(pastryRepository.save(pastry));
+        }
+        return optionalPastry;
     }
 }

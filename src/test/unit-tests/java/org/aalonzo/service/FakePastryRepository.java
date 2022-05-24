@@ -17,7 +17,8 @@ public class FakePastryRepository implements PastryRepository {
 
     @Override
     public <S extends PastryWithToppings> S save(S entity) {
-        return null;
+        pastries.put(entity.getId(),entity);
+        return entity;
     }
 
     @Override

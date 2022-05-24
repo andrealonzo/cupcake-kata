@@ -50,4 +50,8 @@ public class BakeryController {
     public Optional<BakeryOrder> findById(@RequestParam long id) {
         return service.findById(id);
     }
+
+    public void addToppingToPastry(Long pastryId, Long toppingId) {
+        service.addToppingToPastry(pastryId, toppingId);
+    }
 }
