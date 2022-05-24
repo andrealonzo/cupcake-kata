@@ -1,9 +1,0 @@
--- call next value for hibernate_sequence
-insert into pastry (dtype, id) values ('Cookie', 1)
--- call next value for hibernate_sequence
-insert into pastry (dtype, id) values ('Cupcake', 2)
-
--- call next value for hibernate_sequence
-insert into pastry (what_im_topping_id, dtype, id) values (null, 'Chocolate', 3)
--- call next value for hibernate_sequence
-insert into pastry (what_im_topping_id, dtype, id) values (null, 'Nuts', 4)
