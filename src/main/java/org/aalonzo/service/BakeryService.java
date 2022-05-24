@@ -1,7 +1,6 @@
 package org.aalonzo.service;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.PastryWithToppings;
 import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.BakeryOrderRepository;
