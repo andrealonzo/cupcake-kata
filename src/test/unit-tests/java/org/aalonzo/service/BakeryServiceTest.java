@@ -2,6 +2,7 @@ package org.aalonzo.service;
 
 import org.aalonzo.domain.BakeryOrder;
 import org.aalonzo.domain.Pastry;
+import org.aalonzo.domain.PastryType;
 import org.aalonzo.domain.Topping;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -33,8 +34,8 @@ public class BakeryServiceTest {
 
     @BeforeEach
     public void setUp() {
-        pastry1 = new Pastry(COOKIE, 2.0);
-        pastry2 = new Pastry(CUPCAKE, 1.0);
+        pastry1 = new Pastry(new PastryType(COOKIE, 2.0));
+        pastry2 = new Pastry(new PastryType(CUPCAKE, 1.0));
         topping1 = new Topping(CHOCOLATE, .1);
         topping2 = new Topping(NUTS, .2);
         bakeryOrder1 = new BakeryOrder(ORDER_1);

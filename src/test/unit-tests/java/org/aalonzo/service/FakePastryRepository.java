@@ -1,6 +1,7 @@
 package org.aalonzo.service;
 
 import org.aalonzo.domain.Pastry;
+import org.aalonzo.domain.PastryType;
 import org.aalonzo.repository.PastryRepository;
 
 import java.util.HashMap;
@@ -11,7 +12,7 @@ public class FakePastryRepository implements PastryRepository {
 
     Map<Long, Pastry> pastries;
     public FakePastryRepository() {
-        Pastry pastry = new Pastry("Cupcake", 1.00);
+        Pastry pastry = new Pastry(new PastryType("Cupcake", 1.00));
         pastry.setId(1L);
         pastries = new HashMap<>();
         pastries.put(pastry.getId(), pastry);
