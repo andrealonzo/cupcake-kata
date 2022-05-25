@@ -3,6 +3,7 @@ package org.aalonzo.controller;
 import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.PastryType;
 import org.aalonzo.repository.PastryRepository;
+import org.aalonzo.repository.PastryTypeRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class PastryTypeControllerTest {
 
+
     @Autowired
     private PastryRepository repository;
+    @Autowired
+    private PastryTypeRepository pastryTypeRepository;
     @Autowired
     private MockMvc mockMvc;
 
@@ -45,12 +49,16 @@ public class PastryTypeControllerTest {
 
     @Test
     public void addCupcakeAndShow() throws Exception {
-        addAndVerifyPastry(new Pastry(new PastryType("Cupcake", 1.0)));
+
+        PastryType pastryType = pastryTypeRepository.save(new PastryType("Cupcake", 1.0));
+        addAndVerifyPastry(new Pastry(pastryType));
     }
 
     @Test
     public void deleteAllPastries() throws Exception {
-        Pastry pastry = new Pastry(new PastryType("Cupcake", 1.0));
+
+        PastryType pastryType = pastryTypeRepository.save(new PastryType("Cupcake", 1.0));
+        Pastry pastry = new Pastry(pastryType);
 
         //add pastry
         repository.save(pastry);
@@ -65,7 +73,8 @@ public class PastryTypeControllerTest {
 
     @Test
     public void deleteOnePastry() throws Exception {
-        Pastry pastry = new Pastry(new PastryType("Cupcake", 1.0));
+        PastryType pastryType = pastryTypeRepository.save(new PastryType("Cupcake", 1.0));
+        Pastry pastry = new Pastry(pastryType);
 
         repository.save(pastry);
         assertEquals(1, repository.count());
@@ -78,8 +87,8 @@ public class PastryTypeControllerTest {
     private void addAndVerifyPastry(Pastry pastry) throws Exception {
         assertEquals(0, repository.count());
         this.mockMvc.perform(post("/v1/pastry")
-                .param("name", pastry.getName())
-                .param("price", String.valueOf(pastry.getPrice())));
+                .param("name", pastry.getPastryType().getName())
+                .param("price", String.valueOf(pastry.getPastryType().getPrice())));
         assertEquals(1, repository.count());
     }
 }

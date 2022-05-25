@@ -5,6 +5,7 @@ import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.PastryType;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.repository.PastryRepository;
+import org.aalonzo.repository.PastryTypeRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -16,6 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class BakeryOrderRepositoryTest {
     @Autowired
     private PastryRepository pastryRepository;
+    @Autowired
+    private PastryTypeRepository pastryTypeRepository;
     @Autowired
     private BakeryOrderRepository bakeryOrderRepository;
     @Test
@@ -33,7 +36,8 @@ public class BakeryOrderRepositoryTest {
     @Test
     public void addOneOrderWithCupcakeCanRetrieveOrderAndCupcake(){
         BakeryOrder order = new BakeryOrder("order1");
-        Pastry cupcake = new Pastry(new PastryType("Cupcake", 1.0));
+        PastryType pastryType= pastryTypeRepository.save(new PastryType("Cupcake", 1.0));
+        Pastry cupcake = new Pastry(pastryType);
         pastryRepository.save(cupcake);
         order.add(cupcake);
         bakeryOrderRepository.save(order);

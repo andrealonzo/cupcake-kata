@@ -20,7 +20,13 @@ public class Pastry implements Bundable {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Topping> toppings;
 
+    @ManyToOne
+    @JoinColumn(name = "pastry_type_id")
+    private PastryType pastryType;
+
+
     public Pastry(PastryType pastryType) {
+        this.pastryType = pastryType;
         this.name = pastryType.getName();
         this.price = pastryType.getPrice();
         toppings= new ArrayList<>();
@@ -60,6 +66,14 @@ public class Pastry implements Bundable {
         return toppings;
     }
 
+    public PastryType getPastryType() {
+        return pastryType;
+    }
+
+    public void setPastryType(PastryType pastryType) {
+        this.pastryType = pastryType;
+    }
+
     public double calculatePrice(){
         return this.price + toppings.stream()
                 .map(Topping::getPrice)
@@ -68,7 +82,7 @@ public class Pastry implements Bundable {
 
 
     public String generateName() {
-        StringBuilder fullName = new StringBuilder(name);
+        StringBuilder fullName = new StringBuilder(pastryType.getName());
         String connector;
         for (int i = 0; i < toppings.size(); i++) {
             if(i ==0){

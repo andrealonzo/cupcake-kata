@@ -6,6 +6,7 @@ import org.aalonzo.domain.PastryType;
 import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.repository.PastryRepository;
+import org.aalonzo.repository.PastryTypeRepository;
 import org.aalonzo.repository.ToppingRepository;
 import org.aalonzo.service.BakeryService;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,8 @@ public class BakeryServiceIntegrationTest {
     @Autowired
     PastryRepository pastryRepository;
     @Autowired
+    PastryTypeRepository pastryTypeRepository;
+    @Autowired
     ToppingRepository toppingRepository;
     @Autowired
     BakeryService service;
@@ -38,7 +41,8 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void addCookieToOrder(){
         BakeryOrder order = service.add(GENERIC_ORDER_NAME);
-        Pastry cookie = pastryRepository.save(new Pastry(new PastryType("Cookie", 2.0)));
+        PastryType pastryType = pastryTypeRepository.save(new PastryType("Cookie", 2.0));
+        Pastry cookie = pastryRepository.save(new Pastry(pastryType));
         order.add(cookie);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
@@ -48,7 +52,8 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void addCupcakeToOrder(){
         BakeryOrder order = service.add(GENERIC_ORDER_NAME);
-        Pastry cupcake = pastryRepository.save(new Pastry(new PastryType("Cupcake", 1.0)));
+        PastryType pastryType = pastryTypeRepository.save(new PastryType("Cupcake", 1.0));
+        Pastry cupcake = pastryRepository.save(new Pastry(pastryType));
         order.add(cupcake);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
@@ -58,7 +63,9 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void addCupcakeWithNutsToOrder(){
         BakeryOrder order = service.add(GENERIC_ORDER_NAME);
-        Pastry cupcake = pastryRepository.save(new Pastry(new PastryType("Cupcake", 1.0)));
+
+        PastryType pastryType = pastryTypeRepository.save(new PastryType("Cupcake", 1.0));
+        Pastry cupcake = pastryRepository.save(new Pastry(pastryType));
         Topping nuts = toppingRepository.save(new Topping("nuts", .2));
         cupcake.addTopping(nuts);
         Pastry cupcakeWithNuts = pastryRepository.save(cupcake);
@@ -73,7 +80,8 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void addCookieWithNutsAndChocolateToOrder(){
         BakeryOrder order = service.add(GENERIC_ORDER_NAME);
-        Pastry cookie = pastryRepository.save(new Pastry(new PastryType("Cookie", 2.0)));
+        PastryType pastryType = pastryTypeRepository.save(new PastryType("Cookie", 2.0));
+        Pastry cookie = pastryRepository.save(new Pastry(pastryType));
         Topping nuts = toppingRepository.save(new Topping("nuts", .2));
         Topping chocolate = toppingRepository.save(new Topping("chocolate", .1));
         cookie.addTopping(nuts);
