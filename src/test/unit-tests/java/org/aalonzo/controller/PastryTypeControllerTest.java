@@ -31,4 +31,30 @@ public class PastryTypeControllerTest {
         assertEquals(actualPastryType.getPrice(), expectedPastryType.getPrice());
     }
 
+    @Test
+    public void testDeleteAddedPastry(){
+        PastryType expectedPastryType = new PastryType("Cookie", 1.0);
+        PastryType addedPastryType =  controller.add(expectedPastryType.getName(), expectedPastryType.getPrice());
+        Iterable<PastryType> pastryTypes= controller.findAll();
+        assertTrue(pastryTypes.iterator().hasNext());
+
+        controller.delete(addedPastryType.getId());
+
+        Iterable<PastryType> actualPastryTypes= controller.findAll();
+        assertFalse(actualPastryTypes.iterator().hasNext());
+
+    }
+    @Test
+    public void testDeleteAllPastries(){
+        PastryType expectedPastryType = new PastryType("Cookie", 1.0);
+        controller.add(expectedPastryType.getName(), expectedPastryType.getPrice());
+        Iterable<PastryType> pastryTypes= controller.findAll();
+        assertTrue(pastryTypes.iterator().hasNext());
+
+        controller.deleteAll();
+
+        Iterable<PastryType> actualPastryTypes= controller.findAll();
+        assertFalse(actualPastryTypes.iterator().hasNext());
+
+    }
 }

@@ -7,6 +7,8 @@ import org.aalonzo.repository.PastryTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PastryService {
 
@@ -22,9 +24,10 @@ public class PastryService {
     public Iterable<Pastry> findAll() {
         return repository.findAll();
     }
-    public Pastry add(String name, double price){
-        PastryType pastryType = pastryTypeRepository.save(new PastryType(name, price));
-        return repository.save(new Pastry(pastryType));
+
+    public Pastry add(Long pastryTypeId){
+        Optional<PastryType> pastryType= pastryTypeRepository.findById(pastryTypeId);
+        return pastryType.map(type -> repository.save(new Pastry(type))).orElse(null);
     }
     public void deleteAll(){
         repository.deleteAll();

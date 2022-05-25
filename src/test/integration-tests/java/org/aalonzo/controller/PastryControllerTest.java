@@ -44,7 +44,9 @@ public class PastryControllerTest {
 
     @Test
     public void addCookieAndShow() throws Exception {
-        addAndVerifyPastry(new Pastry(new PastryType("Cookie", 2.0)));
+
+        PastryType pastryType = pastryTypeRepository.save(new PastryType("Cookie", 2.0));
+        addAndVerifyPastry(new Pastry(pastryType));
     }
 
     @Test
@@ -87,8 +89,7 @@ public class PastryControllerTest {
     private void addAndVerifyPastry(Pastry pastry) throws Exception {
         assertEquals(0, repository.count());
         this.mockMvc.perform(post("/v1/pastry")
-                .param("name", pastry.getPastryType().getName())
-                .param("price", String.valueOf(pastry.getPastryType().getPrice())));
+                .param("pastryTypeId", String.valueOf(pastry.getPastryType().getId())));
         assertEquals(1, repository.count());
     }
 }

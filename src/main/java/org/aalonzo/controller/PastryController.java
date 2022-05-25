@@ -14,9 +14,10 @@ public class PastryController {
     public @ResponseBody Iterable<Pastry> findAll(){
         return service.findAll();
     }
+
     @PostMapping(path="/pastry")
-    public @ResponseBody Pastry add(@RequestParam String name, @RequestParam double price){
-        return service.add(name, price);
+    public @ResponseBody Pastry add(@RequestParam Long pastryTypeId){
+        return service.add(pastryTypeId);
     }
     @DeleteMapping(path="/pastry/delete/all")
     public @ResponseBody void deleteAll(){
@@ -33,3 +34,4 @@ public class PastryController {
         return String.format("Hello %s!",name);
     }
 }
+
