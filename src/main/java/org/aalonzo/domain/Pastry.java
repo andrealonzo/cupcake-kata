@@ -20,9 +20,9 @@ public class Pastry implements Bundable {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Topping> toppings;
 
-    public Pastry(String name, double price) {
-        this.name = name;
-        this.price = price;
+    public Pastry(PastryType pastryType) {
+        this.name = pastryType.getName();
+        this.price = pastryType.getPrice();
         toppings= new ArrayList<>();
     }
 

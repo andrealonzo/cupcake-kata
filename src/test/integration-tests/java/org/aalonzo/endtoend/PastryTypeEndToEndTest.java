@@ -2,6 +2,7 @@ package org.aalonzo.endtoend;
 
 import org.aalonzo.controller.PastryController;
 import org.aalonzo.domain.Pastry;
+import org.aalonzo.domain.PastryType;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class PastryTypeEndToEndTest {
     @Test
     @Disabled
     public void addPastryAndShow(){
-       Pastry pastry = new Pastry("Cookie", .1);
+       Pastry pastry = new Pastry(new PastryType("Cookie", .1));
 //        HttpHeaders headers = new HttpHeaders();
 //      //  headers.setContentType(MediaType.APPLICATION_JSON);
 //        personJsonObject = new JSONObject();
