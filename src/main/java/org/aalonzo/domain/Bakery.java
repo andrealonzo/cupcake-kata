@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bakery {
-    private final List<PastryWithToppings> pastry;
+    private final List<Pastry> pastry;
 
     public Bakery() {
         this.pastry = new ArrayList<>();
     }
 
-    public List<PastryWithToppings> getAllPastries() {
+    public List<Pastry> getAllPastries() {
         return this.pastry;
     }
 
-    public void add(PastryWithToppings pastry) {
+    public void add(Pastry pastry) {
         this.pastry.add(pastry);
     }
 }

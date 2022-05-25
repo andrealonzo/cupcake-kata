@@ -1,7 +1,7 @@
 package org.aalonzo.endtoend;
 
 import org.aalonzo.controller.PastryController;
-import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Pastry;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PastryEndToEndTest {
+public class PastryTypeEndToEndTest {
 
     @LocalServerPort
     private int port;
@@ -44,7 +44,7 @@ public class PastryEndToEndTest {
     @Test
     @Disabled
     public void addPastryAndShow(){
-       PastryWithToppings pastry = new PastryWithToppings("Cookie", .1);
+       Pastry pastry = new Pastry("Cookie", .1);
 //        HttpHeaders headers = new HttpHeaders();
 //      //  headers.setContentType(MediaType.APPLICATION_JSON);
 //        personJsonObject = new JSONObject();
@@ -58,8 +58,8 @@ public class PastryEndToEndTest {
 //        JsonNode root = objectMapper.readTree(personResultAsJsonStr);
     //    HttpEntity<String> request =  this.restTemplate.postForObject("http://localhost:" + port + "/v1/pastry",pastry,String.class);
 
-        PastryWithToppings[] response = this.restTemplate.getForObject("http://localhost:" + port + "/v1/pastry",
-                PastryWithToppings[].class);
+        Pastry[] response = this.restTemplate.getForObject("http://localhost:" + port + "/v1/pastry",
+                Pastry[].class);
         assertEquals(2,response.length);
 //        assertEquals("Cookie",response.get(0).generateName());
 //        assertEquals("Cupcake",response.get(0).generateName());

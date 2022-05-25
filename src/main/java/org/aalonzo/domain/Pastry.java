@@ -1,12 +1,13 @@
 package org.aalonzo.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.aalonzo.Bundable;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Pastry {
+public class Pastry implements Bundable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,9 +15,15 @@ public class Pastry {
     private String name;
     private double price;
 
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Topping> toppings;
+
     public Pastry(String name, double price) {
         this.name = name;
         this.price = price;
+        toppings= new ArrayList<>();
     }
 
     public Pastry() {
@@ -26,6 +33,10 @@ public class Pastry {
 
     public Pastry(Long id) {
         this.id = id;
+    }
+
+    public void addTopping(Topping topping){
+        toppings.add(topping);
     }
 
     public  double getPrice(){
@@ -45,4 +56,28 @@ public class Pastry {
         this.id = id;
     }
 
+    public List<Topping> getToppings() {
+        return toppings;
+    }
+
+    public double calculatePrice(){
+        return this.price + toppings.stream()
+                .map(Topping::getPrice)
+                .reduce(0.0,Double::sum);
+    }
+
+
+    public String generateName() {
+        StringBuilder fullName = new StringBuilder(name);
+        String connector;
+        for (int i = 0; i < toppings.size(); i++) {
+            if(i ==0){
+                connector = "with";
+            }else{
+                connector = "and";
+            }
+            fullName.append(" ").append(connector).append(" ").append(toppings.get(i).getName());
+        }
+        return fullName.toString();
+    }
 }

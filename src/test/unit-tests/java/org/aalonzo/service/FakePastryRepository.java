@@ -1,6 +1,6 @@
 package org.aalonzo.service;
 
-import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.repository.PastryRepository;
 
 import java.util.HashMap;
@@ -9,27 +9,27 @@ import java.util.Optional;
 
 public class FakePastryRepository implements PastryRepository {
 
-    Map<Long, PastryWithToppings> pastries;
+    Map<Long, Pastry> pastries;
     public FakePastryRepository() {
-        PastryWithToppings pastry = new PastryWithToppings("Cupcake", 1.00);
+        Pastry pastry = new Pastry("Cupcake", 1.00);
         pastry.setId(1L);
         pastries = new HashMap<>();
         pastries.put(pastry.getId(), pastry);
     }
 
     @Override
-    public <S extends PastryWithToppings> S save(S entity) {
+    public <S extends Pastry> S save(S entity) {
         pastries.put(entity.getId(),entity);
         return entity;
     }
 
     @Override
-    public <S extends PastryWithToppings> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends Pastry> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<PastryWithToppings> findById(Long aLong) {
+    public Optional<Pastry> findById(Long aLong) {
 
         return Optional.ofNullable(pastries.get(aLong));
     }
@@ -40,12 +40,12 @@ public class FakePastryRepository implements PastryRepository {
     }
 
     @Override
-    public Iterable<PastryWithToppings> findAll() {
+    public Iterable<Pastry> findAll() {
         return pastries.values();
     }
 
     @Override
-    public Iterable<PastryWithToppings> findAllById(Iterable<Long> longs) {
+    public Iterable<Pastry> findAllById(Iterable<Long> longs) {
         return pastries.values();
     }
 
@@ -60,7 +60,7 @@ public class FakePastryRepository implements PastryRepository {
     }
 
     @Override
-    public void delete(PastryWithToppings entity) {
+    public void delete(Pastry entity) {
 
     }
 
@@ -70,7 +70,7 @@ public class FakePastryRepository implements PastryRepository {
     }
 
     @Override
-    public void deleteAll(Iterable<? extends PastryWithToppings> entities) {
+    public void deleteAll(Iterable<? extends Pastry> entities) {
 
     }
 

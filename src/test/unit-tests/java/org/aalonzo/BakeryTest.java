@@ -1,7 +1,7 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.Bakery;
-import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Pastry;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class BakeryTest {
 
     Bakery bakery = new Bakery();
-    PastryWithToppings cookie = new PastryWithToppings("Cookie", 2.0);
-    PastryWithToppings cupcake = new PastryWithToppings("Cupcake", 1.0);
+    Pastry cookie = new Pastry("Cookie", 2.0);
+    Pastry cupcake = new Pastry("Cupcake", 1.0);
     @Test
     public void newBakeryHasNoPastries(){
         assertTrue(bakery.getAllPastries().isEmpty());
@@ -21,7 +21,7 @@ public class BakeryTest {
     @Test
     public void addingCookieToBakeryReturnsACookie(){
         bakery.add(cookie);
-        List<PastryWithToppings> pastries = bakery.getAllPastries();
+        List<Pastry> pastries = bakery.getAllPastries();
         assertTrue(pastries.contains(cookie));
 
     }
@@ -30,7 +30,7 @@ public class BakeryTest {
     public void addingCookieAndCupcakeToBakeryShowsBoth(){
         bakery.add(cookie);
         bakery.add(cupcake);
-        List<PastryWithToppings> pastries = bakery.getAllPastries();
+        List<Pastry> pastries = bakery.getAllPastries();
         assertTrue(pastries.contains(cookie));
 
     }

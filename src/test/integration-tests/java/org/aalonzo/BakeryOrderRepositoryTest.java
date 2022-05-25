@@ -1,7 +1,7 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.repository.PastryRepository;
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ public class BakeryOrderRepositoryTest {
     @Test
     public void addOneOrderWithCupcakeCanRetrieveOrderAndCupcake(){
         BakeryOrder order = new BakeryOrder("order1");
-        PastryWithToppings cupcake = new PastryWithToppings("Cupcake", 1.0);
+        Pastry cupcake = new Pastry("Cupcake", 1.0);
         pastryRepository.save(cupcake);
         order.add(cupcake);
         bakeryOrderRepository.save(order);

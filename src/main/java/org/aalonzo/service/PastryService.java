@@ -1,6 +1,6 @@
 package org.aalonzo.service;
 
-import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.repository.PastryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,11 @@ public class PastryService {
         this.repository = repository;
     }
 
-    public Iterable<PastryWithToppings> findAll() {
+    public Iterable<Pastry> findAll() {
         return repository.findAll();
     }
-    public PastryWithToppings add(String name, double price){
-        return repository.save(new PastryWithToppings(name, price));
+    public Pastry add(String name, double price){
+        return repository.save(new Pastry(name, price));
     }
     public void deleteAll(){
         repository.deleteAll();

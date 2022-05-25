@@ -1,7 +1,7 @@
 package org.aalonzo.controller;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.service.BakeryService;
@@ -68,7 +68,7 @@ public class BakeryControllerTest {
 
     @Test
     public void addPastryToOrder(){
-        PastryWithToppings pastry = new PastryWithToppings("Cupcake", 1.00);
+        Pastry pastry = new Pastry("Cupcake", 1.00);
         pastry.setId(1L);
         BakeryOrder order = controller.add(ORDER_1);
         controller.addPastryToOrder(1L, order.getId());
@@ -78,7 +78,7 @@ public class BakeryControllerTest {
     @Test
     public void addNonExistentPastryToOrder(){
         long nonExistantPastryId = 10000L;
-        PastryWithToppings pastry = new PastryWithToppings("Cupcake", 1.00);
+        Pastry pastry = new Pastry("Cupcake", 1.00);
         pastry.setId(nonExistantPastryId);
         BakeryOrder order = controller.add(ORDER_1);
         controller.addPastryToOrder(nonExistantPastryId, order.getId());
@@ -88,7 +88,7 @@ public class BakeryControllerTest {
     @Test
     public void addToppingToPastryToOrder(){
 
-        PastryWithToppings pastry = new PastryWithToppings("Cupcake", 1.00);
+        Pastry pastry = new Pastry("Cupcake", 1.00);
         pastry.setId(1L);
         Topping topping = new Topping("Chocolate", .10);
         topping.setId(2L);

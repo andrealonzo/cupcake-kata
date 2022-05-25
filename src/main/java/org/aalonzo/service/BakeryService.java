@@ -1,7 +1,7 @@
 package org.aalonzo.service;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.repository.PastryRepository;
@@ -52,7 +52,7 @@ public class BakeryService {
     }
 
     public void addPastryToOrder(long pastryId, long orderId) {
-        Optional<PastryWithToppings> pastry = pastryRepository.findById(pastryId);
+        Optional<Pastry> pastry = pastryRepository.findById(pastryId);
         if(pastry.isPresent()){
             BakeryOrder order = bakeryOrderRepository.findById(orderId).get();
             order.add(pastry.get());
@@ -60,11 +60,11 @@ public class BakeryService {
         }
     }
 
-    public Optional<PastryWithToppings> addToppingToPastry(Long pastryId, Long toppingId) {
-        Optional<PastryWithToppings> optionalPastry = pastryRepository.findById(pastryId);
+    public Optional<Pastry> addToppingToPastry(Long pastryId, Long toppingId) {
+        Optional<Pastry> optionalPastry = pastryRepository.findById(pastryId);
         Optional<Topping> topping = toppingRepository.findById(toppingId);
         if(topping.isPresent()){
-            PastryWithToppings pastry = optionalPastry.get();
+            Pastry pastry = optionalPastry.get();
             pastry.addTopping(topping.get());
             return Optional.of(pastryRepository.save(pastry));
         }

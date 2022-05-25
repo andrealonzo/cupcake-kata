@@ -16,7 +16,7 @@ public class BakeryOrder {
     }
 
     @OneToMany
-    private final List<PastryWithToppings> pastries;
+    private final List<Pastry> pastries;
 
     public BakeryOrder(String name) {
         pastries = new ArrayList<>();
@@ -29,16 +29,16 @@ public class BakeryOrder {
 
     public double calculateTotalPrice() {
         return pastries.stream()
-                .map(PastryWithToppings::calculatePrice)
+                .map(Pastry::calculatePrice)
                 .reduce(Double::sum)
                 .orElse(0.0);
     }
 
-    public void add(PastryWithToppings pastry) {
+    public void add(Pastry pastry) {
         pastries.add(pastry);
 
     }
-    public List<PastryWithToppings> getPastries(){
+    public List<Pastry> getPastries(){
         return this.pastries;
     }
 

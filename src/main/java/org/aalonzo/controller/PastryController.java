@@ -1,6 +1,6 @@
 package org.aalonzo.controller;
 
-import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.service.PastryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +11,11 @@ public class PastryController {
     @Autowired
     private PastryService service;
     @GetMapping("/pastry")
-    public @ResponseBody Iterable<PastryWithToppings> findAll(){
+    public @ResponseBody Iterable<Pastry> findAll(){
         return service.findAll();
     }
     @PostMapping(path="/pastry")
-    public @ResponseBody PastryWithToppings add(@RequestParam String name, @RequestParam double price){
+    public @ResponseBody Pastry add(@RequestParam String name, @RequestParam double price){
         return service.add(name, price);
     }
     @DeleteMapping(path="/pastry/delete/all")

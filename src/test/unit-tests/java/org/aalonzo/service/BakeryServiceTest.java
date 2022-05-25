@@ -1,7 +1,7 @@
 package org.aalonzo.service;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.Topping;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -24,8 +24,8 @@ public class BakeryServiceTest {
     public static final String CUPCAKE = "Cupcake";
     FakePastryRepository fakePastryRepository = new FakePastryRepository();
     BakeryService service = new BakeryService(new FakeBakeryOrderRepository(), fakePastryRepository, new FakeToppingRepository());
-    PastryWithToppings pastry1;
-    PastryWithToppings pastry2;
+    Pastry pastry1;
+    Pastry pastry2;
     Topping topping1;
     Topping topping2;
     BakeryOrder bakeryOrder1;
@@ -33,8 +33,8 @@ public class BakeryServiceTest {
 
     @BeforeEach
     public void setUp() {
-        pastry1 = new PastryWithToppings(COOKIE, 2.0);
-        pastry2 = new PastryWithToppings(CUPCAKE, 1.0);
+        pastry1 = new Pastry(COOKIE, 2.0);
+        pastry2 = new Pastry(CUPCAKE, 1.0);
         topping1 = new Topping(CHOCOLATE, .1);
         topping2 = new Topping(NUTS, .2);
         bakeryOrder1 = new BakeryOrder(ORDER_1);

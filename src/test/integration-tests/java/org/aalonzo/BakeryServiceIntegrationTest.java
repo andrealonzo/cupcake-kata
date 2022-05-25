@@ -1,7 +1,7 @@
 package org.aalonzo;
 
 import org.aalonzo.domain.BakeryOrder;
-import org.aalonzo.domain.PastryWithToppings;
+import org.aalonzo.domain.Pastry;
 import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.repository.PastryRepository;
@@ -37,7 +37,7 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void addCookieToOrder(){
         BakeryOrder order = service.add(GENERIC_ORDER_NAME);
-        PastryWithToppings cookie = pastryRepository.save(new PastryWithToppings("Cookie", 2.0));
+        Pastry cookie = pastryRepository.save(new Pastry("Cookie", 2.0));
         order.add(cookie);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
@@ -47,7 +47,7 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void addCupcakeToOrder(){
         BakeryOrder order = service.add(GENERIC_ORDER_NAME);
-        PastryWithToppings cupcake = pastryRepository.save(new PastryWithToppings("Cupcake", 1.0));
+        Pastry cupcake = pastryRepository.save(new Pastry("Cupcake", 1.0));
         order.add(cupcake);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
@@ -57,10 +57,10 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void addCupcakeWithNutsToOrder(){
         BakeryOrder order = service.add(GENERIC_ORDER_NAME);
-        PastryWithToppings cupcake = pastryRepository.save(new PastryWithToppings("Cupcake", 1.0));
+        Pastry cupcake = pastryRepository.save(new Pastry("Cupcake", 1.0));
         Topping nuts = toppingRepository.save(new Topping("nuts", .2));
         cupcake.addTopping(nuts);
-        PastryWithToppings cupcakeWithNuts = pastryRepository.save(cupcake);
+        Pastry cupcakeWithNuts = pastryRepository.save(cupcake);
 
         order.add(cupcakeWithNuts);
         BakeryOrder updatedOrder = service.update(order);
@@ -72,13 +72,13 @@ public class BakeryServiceIntegrationTest {
     @Test
     public void addCookieWithNutsAndChocolateToOrder(){
         BakeryOrder order = service.add(GENERIC_ORDER_NAME);
-        PastryWithToppings cookie = pastryRepository.save(new PastryWithToppings("Cookie", 2.0));
+        Pastry cookie = pastryRepository.save(new Pastry("Cookie", 2.0));
         Topping nuts = toppingRepository.save(new Topping("nuts", .2));
         Topping chocolate = toppingRepository.save(new Topping("chocolate", .1));
         cookie.addTopping(nuts);
         cookie.addTopping(chocolate);
 
-        PastryWithToppings cupcakeWithNutsAndChocolate = pastryRepository.save(cookie);
+        Pastry cupcakeWithNutsAndChocolate = pastryRepository.save(cookie);
         order.add(cupcakeWithNutsAndChocolate);
         BakeryOrder updatedOrder = service.update(order);
         assertEquals(1, updatedOrder.getPastries().size());
