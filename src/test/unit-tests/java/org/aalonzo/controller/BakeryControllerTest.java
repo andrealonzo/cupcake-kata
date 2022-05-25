@@ -6,9 +6,9 @@ import org.aalonzo.domain.PastryType;
 import org.aalonzo.domain.Topping;
 import org.aalonzo.repository.BakeryOrderRepository;
 import org.aalonzo.service.BakeryService;
-import org.aalonzo.service.FakeBakeryOrderRepository;
-import org.aalonzo.service.FakePastryRepository;
-import org.aalonzo.service.FakeToppingRepository;
+import org.aalonzo.repository.FakeBakeryOrderRepository;
+import org.aalonzo.repository.FakePastryRepository;
+import org.aalonzo.repository.FakeToppingRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

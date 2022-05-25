@@ -22,7 +22,7 @@ User can see price total price of order
 
 User can see generated name of order (PastryWithToppings)
 
-
+REMOVE JUNIT 4
 
 
 Customer can choose a baked good and add 1 topping.  It will display the name and price.

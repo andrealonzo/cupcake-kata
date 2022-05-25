@@ -1,4 +1,4 @@
-package org.aalonzo.service;
+package org.aalonzo.repository;
 
 
 import org.aalonzo.domain.BakeryOrder;
